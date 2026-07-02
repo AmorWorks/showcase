@@ -791,14 +791,48 @@ p {
   margin-bottom: 16px;
 }
 
+.contact-actions {
+  display: grid;
+  gap: 10px;
+  max-width: 420px;
+  margin-top: 24px;
+}
+
+.contact-copy-button {
+  color: var(--white);
+  background: var(--navy);
+  border: 1px solid var(--navy);
+  cursor: pointer;
+}
+
+.copy-status {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
 .contact-panel {
   padding: 26px;
   box-shadow: none;
 }
 
-.contact-panel .button {
-  width: 100%;
-  margin-top: 22px;
+.consult-template {
+  display: grid;
+  gap: 7px;
+  padding: 16px;
+  margin-top: 14px;
+  background: #f6f8fb;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.consult-template p {
+  color: var(--ink);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.contact-checklist {
+  margin-top: 18px;
 }
 
 .site-footer {
