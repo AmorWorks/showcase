@@ -689,15 +689,17 @@ p {
 
 .process-list {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
 .process-list li {
-  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  min-height: 286px;
   padding: 18px;
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.14);
@@ -715,6 +717,62 @@ p {
 
 .process-list p {
   color: rgba(255, 255, 255, 0.74);
+  font-size: 0.9rem;
+}
+
+.process-meta {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.process-meta strong,
+.process-meta small {
+  display: block;
+}
+
+.process-meta strong {
+  color: var(--gold-soft);
+  font-size: 0.78rem;
+}
+
+.process-meta small {
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.delivery-note {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 22px;
+  align-items: center;
+  margin-top: 18px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+}
+
+.delivery-note .eyebrow {
+  margin-bottom: 8px;
+}
+
+.delivery-checklist {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.delivery-checklist li {
+  padding: 10px 12px;
+  color: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
   font-size: 0.9rem;
 }
 
@@ -767,7 +825,12 @@ p {
   }
 
   .process-list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .delivery-note,
+  .delivery-checklist {
+    grid-template-columns: 1fr;
   }
 }
 
