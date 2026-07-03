@@ -1022,6 +1022,10 @@ p {
   font: inherit;
 }
 
+.application-form .honeypot {
+  display: none;
+}
+
 .application-form textarea {
   min-height: 132px;
   resize: vertical;

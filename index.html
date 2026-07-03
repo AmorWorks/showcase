@@ -510,7 +510,7 @@
             <h2 id="contact-title">各種連絡先・お申し込み</h2>
             <p>
               ホームページ制作、GAS業務アプリ、AI活用、運用サポートの相談はこちらから受け付けます。
-              公式LINEとメール送信フォームは、受付先が確定し次第つなぎ込みます。
+              公式LINEは作成中です。フォームは指定メールアドレスへ通知する設定にしています。
             </p>
           </div>
 
@@ -527,30 +527,38 @@
                 <article>
                   <span>Mail</span>
                   <h4>メール</h4>
-                  <p>送信先アドレス確認後、フォームの通知先として接続します。</p>
-                  <strong>接続待ち</strong>
+                  <p>フォーム送信内容は指定メールアドレスへ通知されます。初回のみ受信側の有効化が必要です。</p>
+                  <strong>送信先設定済み</strong>
                 </article>
                 <article>
                   <span>Form</span>
                   <h4>お申し込みフォーム</h4>
-                  <p>下のフォームで相談内容を整理できます。現在は入力内容のコピーに対応しています。</p>
-                  <strong>仮受付</strong>
+                  <p>下のフォームからホームページ制作、GAS、AI活用、運用サポートの相談を送れます。</p>
+                  <strong>受付中</strong>
                 </article>
               </div>
               <div class="form-note">
                 <h4>メール送信について</h4>
                 <p>
-                  指定アドレスへの自動送信は可能です。GitHub Pagesだけでは送信処理ができないため、
-                  GASまたは外部フォームサービスの受け口を作り、そこから指定アドレスへ通知します。
+                  フォーム送信はFormSubmit経由で受け付けます。初回送信時に届く確認メールを承認すると、
+                  以後の申し込みが指定メールアドレスへ届きます。
                 </p>
               </div>
             </div>
 
-            <form class="application-form" data-application-form>
+            <form
+              class="application-form"
+              data-application-form
+              data-form-endpoint="https://formsubmit.co/ajax/cattery227.amor.alice@gmail.com"
+            >
+              <input type="hidden" name="_subject" value="AmorWorksショーケースからお申し込み">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <input class="honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
               <div class="form-head">
                 <p class="eyebrow">Application Form</p>
                 <h3>お申し込みフォーム</h3>
-                <p>送信機能を接続する前でも、入力内容をコピーしてLINEやメールにそのまま貼り付けられます。</p>
+                <p>必要事項を入力して送信してください。初回は受信側で確認メールを承認すると受付が有効になります。</p>
               </div>
 
               <div class="form-row">
@@ -621,9 +629,9 @@
               </label>
 
               <div class="form-actions">
-                <button class="button contact-copy-button" type="submit">入力内容をコピー</button>
+                <button class="button contact-copy-button" type="submit">送信する</button>
                 <p class="copy-status" data-application-status aria-live="polite">
-                  送信先メールアドレス確定後、自動送信に切り替えます。
+                  送信先: cattery227.amor.alice@gmail.com
                 </p>
                 <textarea class="application-output" data-application-output aria-label="入力内容の控え" readonly hidden></textarea>
               </div>

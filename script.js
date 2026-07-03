@@ -134,6 +134,8 @@
         `【参考サイト・SNS URL】${value("reference") || "未入力"}`,
       ].join("\n");
       const endpoint = applicationForm.dataset.formEndpoint?.trim();
+      formData.set("_replyto", value("email"));
+      formData.set("相談内容まとめ", text);
 
       if (applicationOutput) {
         applicationOutput.value = text;
@@ -142,12 +144,22 @@
 
       try {
         if (endpoint) {
-          await fetch(endpoint, {
+          const response = await fetch(endpoint, {
             method: "POST",
+            headers: {
+              Accept: "application/json",
+            },
             body: formData,
           });
+          if (!response.ok) {
+            throw new Error("form submit failed");
+          }
           if (applicationStatus) {
             applicationStatus.textContent = "送信しました。内容を確認して折り返します。";
+          }
+          if (applicationOutput) {
+            applicationOutput.value = "";
+            applicationOutput.hidden = true;
           }
           applicationForm.reset();
           return;
@@ -159,7 +171,9 @@
         }
       } catch {
         if (applicationStatus) {
-          applicationStatus.textContent = "コピーできませんでした。下に表示された入力内容を選択してコピーしてください。";
+          applicationStatus.textContent = endpoint
+            ? "送信できませんでした。下に表示された入力内容をコピーして、LINEまたはメールで送ってください。"
+            : "コピーできませんでした。下に表示された入力内容を選択してコピーしてください。";
         }
       }
     });
