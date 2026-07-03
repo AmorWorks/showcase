@@ -17,6 +17,7 @@
     <meta property="og:url" content="https://amorworks.github.io/showcase/">
     <meta property="og:image" content="https://amorworks.github.io/showcase/assets/amorworks-logo.jpg">
     <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="assets/amorworks-logo.jpg">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -37,7 +38,7 @@
         <a href="#plans">HPプラン</a>
         <a href="#gas-plan">GAS</a>
         <a href="#flow">流れ</a>
-        <a href="#contact">相談</a>
+        <a href="#contact">連絡・申込</a>
       </nav>
     </header>
 
@@ -503,36 +504,130 @@
       </section>
 
       <section class="section contact-section" id="contact" aria-labelledby="contact-title">
-        <div class="section-inner contact-grid">
-          <div>
-            <p class="eyebrow">Contact</p>
-            <h2 id="contact-title">相談内容をまとめる</h2>
+        <div class="section-inner">
+          <div class="section-heading contact-heading">
+            <p class="eyebrow">Contact & Application</p>
+            <h2 id="contact-title">各種連絡先・お申し込み</h2>
             <p>
-              受付先は確認後に接続します。先に相談内容を整理できるよう、
-              LINEやメールに貼り付けやすい相談メモを用意しました。
+              ホームページ制作、GAS業務アプリ、AI活用、運用サポートの相談はこちらから受け付けます。
+              公式LINEとメール送信フォームは、受付先が確定し次第つなぎ込みます。
             </p>
-            <div class="contact-actions">
-              <button class="button contact-copy-button" type="button" data-copy-consult>相談メモをコピー</button>
-              <span class="copy-status" data-copy-status aria-live="polite">受付先が決まったら、この導線に接続します。</span>
-            </div>
           </div>
-          <div class="contact-panel">
-            <h3>相談メモ</h3>
-            <div class="consult-template" data-consult-template>
-              <p>【相談内容】ホームページ制作 / GAS業務アプリ / AI活用 / 運用サポート について相談したいです。</p>
-              <p>【事業名】</p>
-              <p>【ホームページの場合】気になるプラン: エコノミー / ライト / スタンダード / スタンダード+ / プレミアム</p>
-              <p>【GASの場合】困っている作業・今使っている表・自動化したい流れ:</p>
-              <p>【参考サイト】</p>
-              <p>【希望公開時期】</p>
-              <p>【予算感】</p>
-              <p>【写真・ロゴの有無】</p>
+
+          <div class="contact-grid">
+            <div class="contact-directory" aria-labelledby="contact-directory-title">
+              <h3 id="contact-directory-title">各種連絡先</h3>
+              <div class="contact-methods">
+                <article>
+                  <span>LINE</span>
+                  <h4>公式LINE</h4>
+                  <p>現在作成中です。公開後、ここに友だち追加リンクを接続します。</p>
+                  <strong>準備中</strong>
+                </article>
+                <article>
+                  <span>Mail</span>
+                  <h4>メール</h4>
+                  <p>送信先アドレス確認後、フォームの通知先として接続します。</p>
+                  <strong>接続待ち</strong>
+                </article>
+                <article>
+                  <span>Form</span>
+                  <h4>お申し込みフォーム</h4>
+                  <p>下のフォームで相談内容を整理できます。現在は入力内容のコピーに対応しています。</p>
+                  <strong>仮受付</strong>
+                </article>
+              </div>
+              <div class="form-note">
+                <h4>メール送信について</h4>
+                <p>
+                  指定アドレスへの自動送信は可能です。GitHub Pagesだけでは送信処理ができないため、
+                  GASまたは外部フォームサービスの受け口を作り、そこから指定アドレスへ通知します。
+                </p>
+              </div>
             </div>
-            <ul class="feature-list contact-checklist">
-              <li>受付先のLINE・メール・フォームは確認後に接続</li>
-              <li>相談メモを貼り付けると初回確認がスムーズ</li>
-              <li>正式見積りはページ数と追加機能を確認して提示</li>
-            </ul>
+
+            <form class="application-form" data-application-form>
+              <div class="form-head">
+                <p class="eyebrow">Application Form</p>
+                <h3>お申し込みフォーム</h3>
+                <p>送信機能を接続する前でも、入力内容をコピーしてLINEやメールにそのまま貼り付けられます。</p>
+              </div>
+
+              <div class="form-row">
+                <label>
+                  <span>お名前・ご担当者名</span>
+                  <input type="text" name="name" autocomplete="name" required>
+                </label>
+                <label>
+                  <span>事業名・屋号</span>
+                  <input type="text" name="business" autocomplete="organization">
+                </label>
+              </div>
+
+              <div class="form-row">
+                <label>
+                  <span>メールアドレス</span>
+                  <input type="email" name="email" autocomplete="email" required>
+                </label>
+                <label>
+                  <span>電話番号</span>
+                  <input type="tel" name="tel" autocomplete="tel">
+                </label>
+              </div>
+
+              <fieldset>
+                <legend>相談したい内容</legend>
+                <div class="checkbox-grid">
+                  <label><input type="checkbox" name="service" value="ホームページ制作">ホームページ制作</label>
+                  <label><input type="checkbox" name="service" value="GAS業務アプリ">GAS業務アプリ</label>
+                  <label><input type="checkbox" name="service" value="AI活用サポート">AI活用サポート</label>
+                  <label><input type="checkbox" name="service" value="運用サポート">運用サポート</label>
+                </div>
+              </fieldset>
+
+              <div class="form-row">
+                <label>
+                  <span>気になるHPプラン</span>
+                  <select name="plan">
+                    <option value="">未定・相談したい</option>
+                    <option>エコノミー</option>
+                    <option>ライト</option>
+                    <option>スタンダード</option>
+                    <option>スタンダード+</option>
+                    <option>プレミアム</option>
+                    <option>GASは別途相談</option>
+                  </select>
+                </label>
+                <label>
+                  <span>希望時期</span>
+                  <select name="timing">
+                    <option value="">未定</option>
+                    <option>できるだけ早く</option>
+                    <option>1ヶ月以内</option>
+                    <option>2〜3ヶ月以内</option>
+                    <option>時期も相談したい</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                <span>相談内容・困っていること</span>
+                <textarea name="message" rows="6" placeholder="例: 会社サイトを作りたい、既存サイトを直したい、Excel作業を自動化したい など" required></textarea>
+              </label>
+
+              <label>
+                <span>参考サイト・SNS URL</span>
+                <input type="url" name="reference" placeholder="https://">
+              </label>
+
+              <div class="form-actions">
+                <button class="button contact-copy-button" type="submit">入力内容をコピー</button>
+                <p class="copy-status" data-application-status aria-live="polite">
+                  送信先メールアドレス確定後、自動送信に切り替えます。
+                </p>
+                <textarea class="application-output" data-application-output aria-label="入力内容の控え" readonly hidden></textarea>
+              </div>
+            </form>
           </div>
         </div>
       </section>

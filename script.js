@@ -9,6 +9,9 @@
   const copyConsultButton = document.querySelector("[data-copy-consult]");
   const copyStatus = document.querySelector("[data-copy-status]");
   const consultTemplate = document.querySelector("[data-consult-template]");
+  const applicationForm = document.querySelector("[data-application-form]");
+  const applicationStatus = document.querySelector("[data-application-status]");
+  const applicationOutput = document.querySelector("[data-application-output]");
 
   if (year) {
     year.textContent = new Date().getFullYear();
@@ -56,6 +59,37 @@
     });
   });
 
+  const copyText = async (text) => {
+    let copied = false;
+
+    if (navigator.clipboard && window.isSecureContext) {
+      try {
+        await navigator.clipboard.writeText(text);
+        copied = true;
+      } catch {
+        copied = false;
+      }
+    }
+
+    if (!copied) {
+      const field = document.createElement("textarea");
+      field.value = text;
+      field.setAttribute("readonly", "");
+      field.style.position = "fixed";
+      field.style.top = "0";
+      field.style.left = "-9999px";
+      document.body.appendChild(field);
+      field.focus();
+      field.select();
+      copied = document.execCommand("copy");
+      field.remove();
+    }
+
+    if (!copied) {
+      throw new Error("copy failed");
+    }
+  };
+
   if (copyConsultButton && consultTemplate) {
     copyConsultButton.addEventListener("click", async () => {
       const text = [...consultTemplate.querySelectorAll("p")]
@@ -63,32 +97,7 @@
         .join("\n");
 
       try {
-        let copied = false;
-        if (navigator.clipboard && window.isSecureContext) {
-          try {
-            await navigator.clipboard.writeText(text);
-            copied = true;
-          } catch {
-            copied = false;
-          }
-        }
-
-        if (!copied) {
-          const field = document.createElement("textarea");
-          field.value = text;
-          field.setAttribute("readonly", "");
-          field.style.position = "fixed";
-          field.style.top = "0";
-          field.style.left = "-9999px";
-          document.body.appendChild(field);
-          field.focus();
-          field.select();
-          copied = document.execCommand("copy");
-          field.remove();
-          if (!copied) {
-            throw new Error("copy failed");
-          }
-        }
+        await copyText(text);
         if (copyStatus) {
           copyStatus.textContent = "相談メモをコピーしました。LINEやメールに貼り付けて使えます。";
         }
@@ -100,6 +109,57 @@
         selection.addRange(range);
         if (copyStatus) {
           copyStatus.textContent = "相談メモを選択しました。Ctrl+CでコピーしてLINEやメールに貼り付けてください。";
+        }
+      }
+    });
+  }
+
+  if (applicationForm) {
+    applicationForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(applicationForm);
+      const value = (name) => String(formData.get(name) || "").trim();
+      const services = formData.getAll("service").map(String).join("、") || "未選択";
+      const text = [
+        "【お申し込みフォーム】",
+        `【お名前・ご担当者名】${value("name") || "未入力"}`,
+        `【事業名・屋号】${value("business") || "未入力"}`,
+        `【メールアドレス】${value("email") || "未入力"}`,
+        `【電話番号】${value("tel") || "未入力"}`,
+        `【相談したい内容】${services}`,
+        `【気になるHPプラン】${value("plan") || "未定・相談したい"}`,
+        `【希望時期】${value("timing") || "未定"}`,
+        `【相談内容・困っていること】${value("message") || "未入力"}`,
+        `【参考サイト・SNS URL】${value("reference") || "未入力"}`,
+      ].join("\n");
+      const endpoint = applicationForm.dataset.formEndpoint?.trim();
+
+      if (applicationOutput) {
+        applicationOutput.value = text;
+        applicationOutput.hidden = false;
+      }
+
+      try {
+        if (endpoint) {
+          await fetch(endpoint, {
+            method: "POST",
+            body: formData,
+          });
+          if (applicationStatus) {
+            applicationStatus.textContent = "送信しました。内容を確認して折り返します。";
+          }
+          applicationForm.reset();
+          return;
+        }
+
+        await copyText(text);
+        if (applicationStatus) {
+          applicationStatus.textContent = "入力内容をコピーしました。LINEやメールにそのまま貼り付けられます。";
+        }
+      } catch {
+        if (applicationStatus) {
+          applicationStatus.textContent = "コピーできませんでした。下に表示された入力内容を選択してコピーしてください。";
         }
       }
     });
