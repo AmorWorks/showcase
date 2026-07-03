@@ -139,6 +139,16 @@ a {
   font: inherit;
 }
 
+.top-construction {
+  padding-top: 72px;
+  background: #fffdf9;
+}
+
+.top-construction img {
+  width: min(100%, 1280px);
+  margin: 0 auto;
+}
+
 .hero {
   position: relative;
   display: flex;
@@ -1078,6 +1088,10 @@ p {
   .site-nav a {
     min-height: 44px;
     padding: 11px 10px;
+  }
+
+  .top-construction {
+    padding-top: 64px;
   }
 
   .hero {
