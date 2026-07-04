@@ -25,6 +25,27 @@
   syncHeader();
   window.addEventListener("scroll", syncHeader, { passive: true });
 
+  const realignHashTarget = () => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) return;
+
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    window.requestAnimationFrame(() => {
+      target.scrollIntoView({ block: "start", behavior: "auto" });
+    });
+  };
+
+  window.addEventListener("load", () => {
+    realignHashTarget();
+    window.setTimeout(realignHashTarget, 300);
+  });
+
+  window.addEventListener("hashchange", () => {
+    window.setTimeout(realignHashTarget, 50);
+  });
+
   if (navToggle && nav && header) {
     navToggle.addEventListener("click", () => {
       const isOpen = navToggle.getAttribute("aria-expanded") === "true";
