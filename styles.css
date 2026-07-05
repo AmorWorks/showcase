@@ -2737,6 +2737,10 @@ body.home-page {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
+.home-page .aw-homepage-links-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .home-page .gateway-card {
   min-height: 212px;
   color: inherit;
@@ -2797,6 +2801,17 @@ body.home-page {
 
 .home-page .copy-status {
   color: var(--home-muted);
+}
+
+.aw-dx-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.aw-dx-actions .button {
+  width: auto;
 }
 
 .home-page .contact-copy-button {
@@ -2893,7 +2908,13 @@ body.home-page {
 
   .aw-capability-dock,
   .aw-request-grid,
+  .home-page .aw-homepage-links-grid,
   .home-page .aw-gateway-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aw-dx-actions {
+    display: grid;
     grid-template-columns: 1fr;
   }
 
