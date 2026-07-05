@@ -74,7 +74,8 @@
 
       workCards.forEach((card) => {
         const categories = (card.dataset.category || "").split(" ");
-        const isVisible = filter === "all" || categories.includes(filter);
+        const plan = card.dataset.plan || "";
+        const isVisible = filter === "all" || categories.includes(filter) || plan === filter;
         card.classList.toggle("is-hidden", !isVisible);
       });
     });

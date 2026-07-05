@@ -405,6 +405,13 @@ p {
   overflow: hidden;
 }
 
+.work-card.is-premium-work {
+  grid-column: span 2;
+  border-color: rgba(184, 144, 53, 0.58);
+  background: #06152e;
+  box-shadow: 0 22px 58px rgba(7, 31, 73, 0.22);
+}
+
 .work-card.is-hidden {
   display: none;
 }
@@ -421,6 +428,70 @@ p {
   flex: 1;
   flex-direction: column;
   padding: 22px;
+}
+
+.work-card.is-premium-work .work-body {
+  background:
+    linear-gradient(145deg, rgba(5, 23, 51, 0.98), rgba(14, 48, 79, 0.96)),
+    var(--navy);
+}
+
+.work-card.is-premium-work .work-body h3 {
+  color: var(--white);
+}
+
+.work-card.is-premium-work .work-body p,
+.work-card.is-premium-work .feature-list li {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.work-card.is-premium-work .feature-list li::before {
+  background: #7fe8dd;
+}
+
+.work-card.is-premium-work .text-button {
+  color: var(--gold-soft);
+}
+
+.work-plan-badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 8px;
+  min-height: 34px;
+  padding: 6px 10px;
+  margin-bottom: 14px;
+  color: var(--navy);
+  background: #f7f9fc;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.work-plan-badge span {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.work-plan-badge strong {
+  color: var(--navy);
+  font-size: 0.92rem;
+  line-height: 1;
+}
+
+.work-plan-badge.is-premium {
+  color: var(--white);
+  background: rgba(243, 234, 211, 0.12);
+  border-color: rgba(184, 144, 53, 0.45);
+}
+
+.work-plan-badge.is-premium span {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.work-plan-badge.is-premium strong {
+  color: var(--gold-soft);
 }
 
 .work-meta {
@@ -1758,6 +1829,10 @@ p {
   .process-list,
   .dx-step-grid {
     grid-template-columns: 1fr;
+  }
+
+  .work-card.is-premium-work {
+    grid-column: auto;
   }
 
   .work-body,
