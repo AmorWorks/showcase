@@ -646,6 +646,15 @@ p {
   border-radius: 50%;
 }
 
+.case-point-list {
+  margin-top: 16px;
+}
+
+.case-point-list li {
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
 .work-actions {
   margin-top: auto;
   padding-top: 22px;
@@ -1515,7 +1524,7 @@ p {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
   gap: 36px;
   align-items: start;
 }
@@ -1591,6 +1600,26 @@ p {
   background: #fffaf0;
   border: 1px solid #ead8ad;
   border-radius: 8px;
+}
+
+.form-assurance {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.form-assurance span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 6px 10px;
+  color: var(--navy);
+  background: var(--gold-soft);
+  border: 1px solid rgba(184, 144, 53, 0.32);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 800;
 }
 
 .contact-copy-button {
@@ -2370,8 +2399,8 @@ body.home-page {
 
 .aw-hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.58fr);
-  gap: 54px;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.52fr);
+  gap: 44px;
   align-items: center;
 }
 
@@ -2387,7 +2416,7 @@ body.home-page {
   margin: 0;
   color: var(--home-text);
   font-family: Georgia, "Times New Roman", "Yu Mincho", "Hiragino Mincho ProN", serif;
-  font-size: clamp(3rem, 5.6vw, 5.4rem);
+  font-size: clamp(2.9rem, 4.8vw, 4.55rem);
   font-weight: 700;
   line-height: 1.02;
   text-shadow: 0 18px 54px rgba(0, 0, 0, 0.52);
@@ -2777,8 +2806,14 @@ body.home-page {
 }
 
 .home-page [data-reveal] {
-  --reveal-y: 26px;
+  --reveal-y: 0px;
   --parallax-y: 0px;
+  opacity: 1;
+  transform: translate3d(0, var(--parallax-y), 0);
+}
+
+.home-page.has-reveal [data-reveal] {
+  --reveal-y: 26px;
   opacity: 0;
   transform: translate3d(0, calc(var(--reveal-y) + var(--parallax-y)), 0);
   transition:
@@ -2787,13 +2822,13 @@ body.home-page {
     border-color 180ms ease;
 }
 
-.home-page [data-reveal].is-visible {
+.home-page.has-reveal [data-reveal].is-visible {
   --reveal-y: 0px;
   opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-page [data-reveal] {
+  .home-page.has-reveal [data-reveal] {
     opacity: 1;
     transform: none;
     transition: none;

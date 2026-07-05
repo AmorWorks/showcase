@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>相談・申し込み | AmorWorks Showcase</title>
+    <title>依頼相談 | AmorWorks Showcase</title>
     <meta name="description" content="AmorWorksへのホームページ制作、DX・AI導入、Webアプリ、運用サポートの相談フォームです。">
-    <meta property="og:title" content="相談・申し込み | AmorWorks Showcase">
+    <meta property="og:title" content="依頼相談 | AmorWorks Showcase">
     <meta property="og:description" content="制作プランが未定でも、目的や困っていることから相談できます。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://amorworks.github.io/showcase/contact/">
@@ -36,7 +36,7 @@
       <section class="subpage-hero is-light-visual">
         <div class="section-inner subpage-hero-grid">
           <div>
-            <p class="eyebrow">Contact & Application</p>
+            <p class="eyebrow">Contact / Request</p>
             <h1>まだ曖昧でも、相談できます。</h1>
             <p class="subpage-lead">
               ホームページ制作、DX・AI導入、Webアプリ、運用サポートの相談はこちらから受け付けます。
@@ -54,61 +54,38 @@
         <div class="section-inner">
           <div class="section-heading contact-heading">
             <p class="eyebrow">Contact Route</p>
-            <h2>各種連絡先・お申し込み</h2>
-            <p>公式LINEは作成中です。フォームはFormSubmit経由で指定メールアドレスへ通知する設定です。</p>
+            <h2>依頼相談フォーム</h2>
+            <p>制作プランや依頼内容が決まっていなくても大丈夫です。分かる範囲で送ってください。</p>
           </div>
 
           <div class="contact-grid">
-            <div class="contact-directory">
-              <h3>各種連絡先</h3>
-              <div class="contact-methods">
-                <article>
-                  <span>LINE</span>
-                  <h4>公式LINE</h4>
-                  <p>現在作成中です。公開後、ここに友だち追加リンクを接続します。</p>
-                  <strong>準備中</strong>
-                </article>
-                <article>
-                  <span>Mail</span>
-                  <h4>メール</h4>
-                  <p>フォーム送信内容は指定メールアドレスへ通知されます。初回のみ受信側の有効化が必要です。</p>
-                  <strong>送信先設定済み</strong>
-                </article>
-                <article>
-                  <span>Form</span>
-                  <h4>お申し込みフォーム</h4>
-                  <p>下のフォームからホームページ制作、DX・AI導入、Webアプリ、運用サポートの相談を送れます。</p>
-                  <strong>受付中</strong>
-                </article>
-              </div>
-              <div class="form-note">
-                <h4>メール送信について</h4>
-                <p>フォーム送信はFormSubmit経由で受け付けます。初回送信時に届く確認メールを承認すると、以後の申し込みが指定メールアドレスへ届きます。</p>
-              </div>
-            </div>
-
             <form class="application-form" data-application-form data-form-endpoint="https://formsubmit.co/ajax/cattery227.amor.alice@gmail.com">
-              <input type="hidden" name="_subject" value="AmorWorksショーケースからお申し込み">
+              <input type="hidden" name="_subject" value="AmorWorksショーケースから依頼相談">
               <input type="hidden" name="_template" value="table">
               <input type="hidden" name="_captcha" value="false">
               <input class="honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
               <div class="form-head">
-                <p class="eyebrow">Application Form</p>
-                <h3>お申し込みフォーム</h3>
-                <p>必要事項を入力して送信してください。初回は受信側で確認メールを承認すると受付が有効になります。</p>
+                <p class="eyebrow">Request Form</p>
+                <h3>依頼相談フォーム</h3>
+                <p>必要事項だけでなく、まだ整理できていない困りごとも送れます。内容を見て、最初に確認すべきことから返信します。</p>
+                <div class="form-assurance" aria-label="送信前の確認">
+                  <span>分かる範囲でOK</span>
+                  <span>内容を整理して返信</span>
+                  <span>HP以外の相談も受付</span>
+                </div>
               </div>
 
               <div class="form-row">
-                <label><span>お名前・ご担当者名</span><input type="text" name="name" autocomplete="name" required></label>
-                <label><span>事業名・屋号</span><input type="text" name="business" autocomplete="organization"></label>
+                <label><span>お名前・ご担当者名（必須）</span><input type="text" name="name" autocomplete="name" required></label>
+                <label><span>事業名・屋号（任意）</span><input type="text" name="business" autocomplete="organization"></label>
               </div>
               <div class="form-row">
-                <label><span>メールアドレス</span><input type="email" name="email" autocomplete="email" required></label>
-                <label><span>電話番号</span><input type="tel" name="tel" autocomplete="tel"></label>
+                <label><span>メールアドレス（必須）</span><input type="email" name="email" autocomplete="email" required></label>
+                <label><span>電話番号（任意）</span><input type="tel" name="tel" autocomplete="tel"></label>
               </div>
 
               <fieldset>
-                <legend>相談したい内容</legend>
+                <legend>相談したい内容（任意・複数選択可）</legend>
                 <div class="checkbox-grid">
                   <label><input type="checkbox" name="service" value="ホームページ制作">ホームページ制作</label>
                   <label><input type="checkbox" name="service" value="DX・AI相談">DX・AI相談</label>
@@ -119,7 +96,7 @@
 
               <div class="form-row">
                 <label>
-                  <span>気になるHPプラン</span>
+                  <span>気になるHPプラン（任意）</span>
                   <select name="plan">
                     <option value="">未定・相談したい</option>
                     <option>Economy（¥30,000・税込）</option>
@@ -131,7 +108,7 @@
                   </select>
                 </label>
                 <label>
-                  <span>希望時期</span>
+                  <span>希望時期（任意）</span>
                   <select name="timing">
                     <option value="">未定</option>
                     <option>できるだけ早く</option>
@@ -143,21 +120,49 @@
               </div>
 
               <label>
-                <span>相談内容・困っていること</span>
+                <span>相談内容・困っていること（必須）</span>
                 <textarea name="message" rows="6" placeholder="例: 会社サイトを作りたい、既存サイトを直したい、Excel作業を自動化したい など" required></textarea>
               </label>
 
               <label>
-                <span>参考サイト・SNS URL</span>
+                <span>参考サイト・SNS URL（任意）</span>
                 <input type="url" name="reference" placeholder="https://">
               </label>
 
               <div class="form-actions">
-                <button class="button contact-copy-button" type="submit">送信する</button>
-                <p class="copy-status" data-application-status aria-live="polite">送信先: cattery227.amor.alice@gmail.com</p>
+                <button class="button contact-copy-button" type="submit">依頼相談を送信する</button>
+                <p class="copy-status" data-application-status aria-live="polite">送信内容は相談対応のために確認します。</p>
                 <textarea class="application-output" data-application-output aria-label="入力内容の控え" readonly hidden></textarea>
               </div>
             </form>
+
+            <div class="contact-directory">
+              <h3>送信後の流れ</h3>
+              <div class="contact-methods contact-steps">
+                <article>
+                  <span>Step 01</span>
+                  <h4>相談内容を送る</h4>
+                  <p>ホームページ、DX・AI、Webアプリ、運用サポートなど、分かる範囲の言葉で送れます。</p>
+                  <strong>受付中</strong>
+                </article>
+                <article>
+                  <span>Step 02</span>
+                  <h4>内容を整理する</h4>
+                  <p>目的、予算、今の困りごとを見て、制作・改善の入口を整理します。</p>
+                  <strong>整理</strong>
+                </article>
+                <article>
+                  <span>Step 03</span>
+                  <h4>次の進め方を返信</h4>
+                  <p>最初に確認したいこと、合いそうな制作範囲、進め方の候補を返します。</p>
+                  <strong>返信</strong>
+                </article>
+              </div>
+              <div class="form-note">
+                <h4>連絡手段について</h4>
+                <p>現在はフォーム受付を優先しています。公式LINEは準備中のため、接続後に案内を追加します。</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

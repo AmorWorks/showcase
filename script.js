@@ -121,7 +121,7 @@
       try {
         await copyText(text);
         if (copyStatus) {
-          copyStatus.textContent = "相談メモをコピーしました。LINEやメールに貼り付けて使えます。";
+          copyStatus.textContent = "相談メモをコピーしました。メールなどに貼り付けて使えます。";
         }
       } catch {
         const selection = window.getSelection();
@@ -130,7 +130,7 @@
         selection.removeAllRanges();
         selection.addRange(range);
         if (copyStatus) {
-          copyStatus.textContent = "相談メモを選択しました。Ctrl+CでコピーしてLINEやメールに貼り付けてください。";
+          copyStatus.textContent = "相談メモを選択しました。Ctrl+Cでコピーしてメールなどに貼り付けてください。";
         }
       }
     });
@@ -144,7 +144,7 @@
       const value = (name) => String(formData.get(name) || "").trim();
       const services = formData.getAll("service").map(String).join("、") || "未選択";
       const text = [
-        "【お申し込みフォーム】",
+        "【依頼相談フォーム】",
         `【お名前・ご担当者名】${value("name") || "未入力"}`,
         `【事業名・屋号】${value("business") || "未入力"}`,
         `【メールアドレス】${value("email") || "未入力"}`,
@@ -177,7 +177,7 @@
             throw new Error("form submit failed");
           }
           if (applicationStatus) {
-            applicationStatus.textContent = "送信しました。内容を確認して折り返します。";
+            applicationStatus.textContent = "送信しました。内容を確認して、最初に整理すべきことから返信します。";
           }
           if (applicationOutput) {
             applicationOutput.value = "";
@@ -189,12 +189,12 @@
 
         await copyText(text);
         if (applicationStatus) {
-          applicationStatus.textContent = "入力内容をコピーしました。LINEやメールにそのまま貼り付けられます。";
+          applicationStatus.textContent = "入力内容をコピーしました。メールにそのまま貼り付けられます。";
         }
       } catch {
         if (applicationStatus) {
           applicationStatus.textContent = endpoint
-            ? "送信できませんでした。下に表示された入力内容をコピーして、LINEまたはメールで送ってください。"
+            ? "送信できませんでした。下に表示された入力内容をコピーして、メールで送ってください。"
             : "コピーできませんでした。下に表示された入力内容を選択してコピーしてください。";
         }
       }
