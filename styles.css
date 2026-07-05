@@ -2258,3 +2258,620 @@ p {
     flex-direction: column;
   }
 }
+
+/* Home redesign: 3D gateway experience */
+body.home-page {
+  --home-bg: #020711;
+  --home-panel: rgba(255, 255, 255, 0.075);
+  --home-panel-strong: rgba(255, 255, 255, 0.12);
+  --home-line: rgba(255, 255, 255, 0.16);
+  --home-text: #f8f4ea;
+  --home-muted: rgba(248, 244, 234, 0.72);
+  --home-gold: #f0c978;
+  --home-cyan: #81dcff;
+  --home-green: #8ce7c6;
+  --home-rose: #ed9bb4;
+  color: var(--home-text);
+  background: var(--home-bg);
+}
+
+.home-page *,
+.home-page *::before,
+.home-page *::after {
+  letter-spacing: 0;
+}
+
+.home-page .site-header {
+  background: rgba(2, 7, 17, 0.62);
+  border-bottom-color: rgba(240, 201, 120, 0.18);
+}
+
+.home-page .site-header.is-scrolled,
+.home-page .site-header.is-open {
+  background: rgba(2, 7, 17, 0.94);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.32);
+}
+
+.home-page .brand-mark {
+  color: #050914;
+  background: linear-gradient(135deg, #fff8df, #e8bf68);
+  border-color: rgba(240, 201, 120, 0.8);
+}
+
+.home-page .brand-copy strong,
+.home-page .site-nav a {
+  color: var(--home-text);
+}
+
+.home-page .brand-copy small {
+  color: rgba(248, 244, 234, 0.68);
+}
+
+.home-stage {
+  position: relative;
+  overflow: clip;
+  background:
+    linear-gradient(180deg, #020711 0%, #07111f 42%, #050914 100%);
+}
+
+.aw-hero {
+  position: relative;
+  min-height: 100svh;
+  padding: 124px 0 42px;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(2, 7, 17, 0.98) 0%, rgba(3, 12, 27, 0.88) 46%, rgba(2, 7, 17, 0.36) 100%),
+    linear-gradient(180deg, #020711 0%, #09213d 64%, #050914 100%);
+  isolation: isolate;
+}
+
+.aw-hero::before {
+  content: "";
+  position: absolute;
+  inset: auto -10% 12% -10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(240, 201, 120, 0.8), rgba(129, 220, 255, 0.72), transparent);
+  box-shadow: 0 0 42px rgba(129, 220, 255, 0.36);
+  transform: rotate(-7deg);
+  z-index: 1;
+}
+
+.aw-hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.aw-hero-canvas[hidden] {
+  display: none;
+}
+
+.aw-hero-gridline {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 92px 92px;
+  mask-image: linear-gradient(180deg, transparent 0%, black 24%, black 72%, transparent 100%);
+  opacity: 0.42;
+  pointer-events: none;
+}
+
+.aw-hero-inner,
+.aw-capability-dock,
+.aw-scroll-cue {
+  position: relative;
+  z-index: 2;
+}
+
+.aw-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.58fr);
+  gap: 54px;
+  align-items: center;
+}
+
+.aw-hero-copy {
+  max-width: 720px;
+}
+
+.home-page .eyebrow {
+  color: var(--home-gold);
+}
+
+.aw-hero h1 {
+  margin: 0;
+  color: var(--home-text);
+  font-family: Georgia, "Times New Roman", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(3rem, 5.6vw, 5.4rem);
+  font-weight: 700;
+  line-height: 1.02;
+  text-shadow: 0 18px 54px rgba(0, 0, 0, 0.52);
+}
+
+.aw-hero h1 span {
+  display: block;
+  white-space: nowrap;
+}
+
+.home-page .hero-lead {
+  max-width: 680px;
+  margin-top: 28px;
+  color: var(--home-muted);
+  font-size: clamp(1rem, 1.6vw, 1.18rem);
+}
+
+.home-page .hero-actions {
+  margin-top: 34px;
+}
+
+.home-page .button.primary {
+  color: #07101f;
+  background: linear-gradient(135deg, #fff5d6, #f0c978);
+  border: 1px solid rgba(240, 201, 120, 0.72);
+  box-shadow: 0 14px 34px rgba(240, 201, 120, 0.18);
+}
+
+.home-page .button.secondary {
+  color: var(--home-text);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.aw-hero-panel,
+.aw-capability-dock a,
+.aw-request-card,
+.home-page .work-card,
+.home-page .gateway-card,
+.aw-orbit-list,
+.home-page .contact-directory,
+.home-page .application-form {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.045)),
+    rgba(4, 13, 27, 0.78);
+  border: 1px solid var(--home-line);
+  border-radius: 8px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(16px);
+}
+
+.aw-hero-panel {
+  display: grid;
+  gap: 16px;
+  padding: 28px;
+}
+
+.aw-hero-panel span,
+.aw-capability-dock span,
+.aw-request-card span,
+.aw-orbit-list span,
+.home-page .gateway-card span,
+.home-page .work-meta span,
+.home-page .contact-methods span {
+  color: var(--home-gold);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.aw-hero-panel strong {
+  color: var(--home-text);
+  font-size: 1.45rem;
+  line-height: 1.42;
+}
+
+.aw-hero-panel p,
+.aw-capability-dock small,
+.aw-request-card p,
+.aw-motion-copy p,
+.aw-split-heading > p,
+.home-page .gateway-card p,
+.home-page .work-body p,
+.home-page .contact-grid p {
+  color: var(--home-muted);
+}
+
+.aw-hero-mini-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.aw-hero-mini-stats div {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+}
+
+.aw-hero-mini-stats strong,
+.aw-hero-mini-stats small {
+  display: block;
+}
+
+.aw-hero-mini-stats strong {
+  color: var(--home-cyan);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.65rem;
+  line-height: 1;
+}
+
+.aw-hero-mini-stats small {
+  margin-top: 6px;
+  color: var(--home-muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.aw-capability-dock {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 68px;
+}
+
+.aw-capability-dock a {
+  display: grid;
+  gap: 8px;
+  min-height: 132px;
+  padding: 20px;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.aw-capability-dock a:hover,
+.aw-capability-dock a:focus-visible,
+.aw-request-card:hover,
+.aw-request-card:focus-visible,
+.home-page .gateway-card:hover,
+.home-page .gateway-card:focus-visible,
+.home-page .latest-work-card:hover,
+.home-page .latest-work-card:focus-visible {
+  transform: translate3d(0, calc(var(--parallax-y, 0px) - 3px), 0);
+  border-color: rgba(240, 201, 120, 0.58);
+  outline: none;
+}
+
+.aw-capability-dock strong {
+  color: var(--home-text);
+  font-size: 1.08rem;
+}
+
+.aw-scroll-cue {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  width: max-content;
+  margin: 30px auto 0;
+  color: rgba(248, 244, 234, 0.68);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.aw-scroll-cue i {
+  display: block;
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(180deg, var(--home-gold), transparent);
+}
+
+.home-page .section {
+  padding: 106px 0;
+  background: transparent;
+}
+
+.aw-request-section,
+.aw-works-section,
+.aw-gateway-section,
+.aw-contact-section {
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.aw-request-section {
+  background:
+    linear-gradient(180deg, #050914, #091321 58%, #050914);
+}
+
+.aw-motion-section {
+  background:
+    linear-gradient(135deg, rgba(240, 201, 120, 0.08), transparent 38%),
+    linear-gradient(180deg, #050914, #071624);
+}
+
+.aw-works-section {
+  background:
+    linear-gradient(180deg, #071624, #050914);
+}
+
+.aw-gateway-section {
+  background:
+    linear-gradient(180deg, #050914, #07111f);
+}
+
+.aw-split-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 44px;
+  align-items: end;
+  margin-bottom: 34px;
+}
+
+.aw-split-heading h2,
+.aw-motion-copy h2,
+.home-page .contact-heading h2 {
+  color: var(--home-text);
+  font-size: clamp(2.15rem, 4.2vw, 4.35rem);
+  line-height: 1.08;
+}
+
+.aw-request-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.aw-request-card {
+  display: grid;
+  gap: 14px;
+  min-height: 246px;
+  padding: 24px;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.aw-request-card h3,
+.home-page .gateway-card h3,
+.home-page .work-body h3,
+.home-page .contact-directory h3,
+.home-page .application-form h3,
+.home-page .contact-methods h4,
+.home-page .form-note h4 {
+  color: var(--home-text);
+}
+
+.aw-motion-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.84fr) minmax(320px, 0.76fr);
+  gap: 42px;
+  align-items: center;
+}
+
+.aw-motion-copy {
+  max-width: 760px;
+}
+
+.aw-orbit-list {
+  display: grid;
+  gap: 12px;
+  padding: 24px;
+}
+
+.aw-orbit-list div {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 14px;
+  align-items: center;
+  min-height: 66px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.aw-orbit-list strong {
+  color: var(--home-cyan);
+}
+
+.aw-orbit-list small {
+  color: var(--home-muted);
+}
+
+.home-page .aw-case-grid {
+  align-items: stretch;
+}
+
+.home-page .work-card {
+  color: inherit;
+  overflow: hidden;
+}
+
+.home-page .work-card img {
+  background: #020711;
+}
+
+.home-page .work-body {
+  background: transparent;
+}
+
+.home-page .work-meta span {
+  background: rgba(240, 201, 120, 0.13);
+  border: 1px solid rgba(240, 201, 120, 0.2);
+}
+
+.home-page .latest-card-action {
+  color: var(--home-gold);
+}
+
+.home-page .section-more .button {
+  width: auto;
+}
+
+.home-page .aw-gateway-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.home-page .gateway-card {
+  min-height: 212px;
+  color: inherit;
+}
+
+.home-page .aw-contact-section {
+  background:
+    linear-gradient(180deg, #07111f, #020711);
+  padding-bottom: 112px;
+}
+
+.home-page .contact-heading {
+  max-width: 880px;
+}
+
+.home-page .contact-grid {
+  align-items: stretch;
+}
+
+.home-page .form-note {
+  color: var(--home-muted);
+  background: rgba(240, 201, 120, 0.1);
+  border-color: rgba(240, 201, 120, 0.24);
+}
+
+.home-page .contact-methods article {
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.home-page .contact-methods strong {
+  color: #07101f;
+  background: var(--home-gold);
+}
+
+.home-page .application-form label span,
+.home-page .application-form legend {
+  color: var(--home-text);
+}
+
+.home-page .application-form input,
+.home-page .application-form select,
+.home-page .application-form textarea {
+  color: #111827;
+  background: rgba(255, 255, 255, 0.93);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.home-page .application-form fieldset {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.home-page .checkbox-grid label {
+  color: var(--home-text);
+  background: rgba(255, 255, 255, 0.075);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.home-page .copy-status {
+  color: var(--home-muted);
+}
+
+.home-page .contact-copy-button {
+  color: #07101f;
+  background: linear-gradient(135deg, #fff5d6, #f0c978);
+  border-color: rgba(240, 201, 120, 0.72);
+}
+
+.home-page [data-reveal] {
+  --reveal-y: 26px;
+  --parallax-y: 0px;
+  opacity: 0;
+  transform: translate3d(0, calc(var(--reveal-y) + var(--parallax-y)), 0);
+  transition:
+    opacity 720ms ease,
+    transform 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 180ms ease;
+}
+
+.home-page [data-reveal].is-visible {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 1180px) {
+  .home-page .aw-gateway-grid,
+  .aw-request-grid,
+  .aw-capability-dock {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 920px) {
+  .aw-hero {
+    padding-top: 104px;
+  }
+
+  .aw-hero-inner,
+  .aw-split-heading,
+  .aw-motion-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aw-hero-panel {
+    max-width: 620px;
+  }
+
+  .aw-split-heading {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 620px) {
+  .aw-hero {
+    min-height: auto;
+    padding: 96px 0 34px;
+  }
+
+  .aw-hero h1 {
+    font-size: 2.18rem;
+  }
+
+  .aw-hero h1 span {
+    white-space: normal;
+  }
+
+  .home-page .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .aw-hero-panel,
+  .aw-capability-dock a,
+  .aw-request-card,
+  .aw-orbit-list,
+  .home-page .contact-directory,
+  .home-page .application-form {
+    padding: 20px;
+  }
+
+  .aw-capability-dock,
+  .aw-request-grid,
+  .home-page .aw-gateway-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aw-hero-mini-stats,
+  .aw-orbit-list div {
+    grid-template-columns: 1fr;
+  }
+
+  .home-page .section {
+    padding: 72px 0;
+  }
+
+  .aw-scroll-cue {
+    display: none;
+  }
+}

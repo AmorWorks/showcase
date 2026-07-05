@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AmorWorks Showcase | ホームページ制作・DX・AI支援・ビルド事例集</title>
+    <title>AmorWorks Gateway | ホームページ制作・DX・AI相談の入口</title>
     <meta
       name="description"
-      content="AmorWorksが制作したホームページ、問い合わせ導線、予約導線、DX・AI支援、運用サポートのビルド事例と料金プランを紹介するショーケースです。"
+      content="ホームページ制作、DX・AI導入、Webアプリ、運用サポートまで。AmorWorksへのすべての依頼を整理して相談できる入口ページです。"
     >
-    <meta property="og:title" content="AmorWorks Showcase">
+    <meta property="og:title" content="AmorWorks Gateway">
     <meta
       property="og:description"
-      content="小さな事業の魅力を伝え、問い合わせや予約につなげるホームページ制作事例集。"
+      content="ホームページ制作、DX・AI、Webアプリ、運用改善まで。すべての依頼の入口として相談できるAmorWorksのトップページ。"
     >
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://amorworks.github.io/showcase/">
@@ -20,7 +20,7 @@
     <link rel="icon" href="assets/amorworks-logo.jpg">
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body>
+  <body class="home-page">
     <header class="site-header" data-header>
       <a class="brand" href="#top" aria-label="AmorWorks Showcase トップへ">
         <span class="brand-mark" aria-hidden="true">AW</span>
@@ -39,120 +39,161 @@
         <a href="plans/">料金</a>
         <a href="dx-ai/">DX・AI</a>
         <a href="flow/">流れ</a>
-        <a href="contact/">相談</a>
+        <a href="#contact">相談</a>
       </nav>
     </header>
 
-    <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-shade" aria-hidden="true"></div>
-        <div class="hero-content">
-          <p class="eyebrow">Create with heart. Grow together.</p>
-          <h1 id="hero-title">AmorWorks Showcase</h1>
-          <p class="hero-lead">
-          ホームページ制作、予約・問い合わせ導線、DX・AIによる業務改善、公開後の更新サポートまで。
-          小さな事業の魅力を、見やすく、動かしやすいWebサイトに整えます。
-          </p>
-          <div class="hero-actions" aria-label="主な導線">
-            <a class="button primary" href="contact/">制作・DXについて相談する</a>
-            <a class="button secondary" href="works/">ビルド事例を見る</a>
+    <main id="top" class="home-stage">
+      <section class="aw-hero" aria-labelledby="hero-title" data-hero-stage>
+        <canvas class="aw-hero-canvas" data-hero-canvas aria-hidden="true"></canvas>
+        <div class="aw-hero-gridline" aria-hidden="true"></div>
+        <div class="section-inner aw-hero-inner">
+          <div class="aw-hero-copy" data-reveal>
+            <p class="eyebrow">AmorWorks Gateway / Every request starts here</p>
+            <h1 id="hero-title"><span>想いを、カタチに。</span><span>未来を、動かす力に。</span></h1>
+            <p class="hero-lead">
+              ホームページ制作、DX・AI、業務アプリ、運用改善まで。
+              AmorWorksへのすべての依頼は、ここから整理して、動く形に変えていきます。
+            </p>
+            <div class="hero-actions" aria-label="主な導線">
+              <a class="button primary" href="#contact">まずは依頼内容を相談する</a>
+              <a class="button secondary" href="works/">ビルド事例を見る</a>
+            </div>
           </div>
+
+          <aside class="aw-hero-panel" data-reveal data-depth="0.12" aria-label="AmorWorksの入口">
+            <span>All Requests Entrance</span>
+            <strong>Web、DX、AI、運用まで、依頼の入口をひとつに。</strong>
+            <p>最初から答えが決まっていなくても大丈夫です。目的、予算、今の困りごとから、必要な制作・改善ルートを一緒に決めます。</p>
+            <div class="aw-hero-mini-stats" aria-label="入口の整理">
+              <div><strong>3</strong><small>公開中の事例</small></div>
+              <div><strong>5</strong><small>相談ルート</small></div>
+              <div><strong>1</strong><small>入口フォーム</small></div>
+            </div>
+          </aside>
         </div>
-        <div class="hero-facts" aria-label="AmorWorksの特徴">
-          <div>
-            <span>Static</span>
-            <strong>月額サーバー費用なし</strong>
-            <small>GitHub Pagesで軽く運用</small>
-          </div>
-          <div>
-            <span>Flow</span>
-            <strong>相談から公開まで整理</strong>
-            <small>ヒアリング、制作、修正、納品</small>
-          </div>
-          <div>
-            <span>Support</span>
-            <strong>公開後も更新できる</strong>
-            <small>写真差し替えやお知らせ更新に対応</small>
-          </div>
+
+        <div class="section-inner aw-capability-dock" aria-label="AmorWorksで相談できること">
+          <a href="services/" data-reveal data-depth="0.05">
+            <span>01 / Website</span>
+            <strong>ホームページ制作</strong>
+            <small>信頼、集客、採用、問い合わせまで整える。</small>
+          </a>
+          <a href="dx-ai/" data-reveal data-depth="0.09">
+            <span>02 / DX & AI</span>
+            <strong>DX・AI導入</strong>
+            <small>現場の業務を聞き取り、小さく改善する。</small>
+          </a>
+          <a href="services/" data-reveal data-depth="0.13">
+            <span>03 / Apps</span>
+            <strong>Webアプリ・GAS</strong>
+            <small>予約、集計、通知、管理画面を業務に合わせる。</small>
+          </a>
+          <a href="philosophy/" data-reveal data-depth="0.17">
+            <span>04 / Partner</span>
+            <strong>伴走するパートナー</strong>
+            <small>公開して終わりではなく、育て続ける。</small>
+          </a>
         </div>
+
+        <a class="aw-scroll-cue" href="#request-map" aria-label="次のセクションへ">
+          <span>Scroll</span>
+          <i aria-hidden="true"></i>
+        </a>
       </section>
 
-      <section class="top-construction" aria-label="サイト構築中のお知らせ">
-        <img
-          src="assets/showcase-under-construction.jpg"
-          alt="サイト構築中です。更新の可能性があり、タイミングによってはアクセスできない可能性があります。また、内容も変わります。"
-        >
-      </section>
-
-      <section class="mobile-facts" aria-label="AmorWorksの特徴">
-        <div class="section-inner mobile-facts-grid">
+      <section class="section aw-request-section" id="request-map" aria-labelledby="request-title">
+        <div class="section-inner aw-split-heading" data-reveal>
           <div>
-            <span>Static</span>
-            <strong>月額サーバー費用なし</strong>
-            <small>GitHub Pagesで軽く運用</small>
-          </div>
-          <div>
-            <span>Flow</span>
-            <strong>相談から公開まで整理</strong>
-            <small>ヒアリング、制作、修正、納品</small>
-          </div>
-          <div>
-            <span>Support</span>
-            <strong>公開後も更新できる</strong>
-            <small>写真差し替えやお知らせ更新に対応</small>
-          </div>
-        </div>
-      </section>
-
-      <section class="intro-band" aria-labelledby="intro-title">
-        <div class="section-inner intro-grid">
-          <div>
-            <p class="eyebrow">Build Archive</p>
-            <h2 id="intro-title">「何を作ったか」だけでなく、「何のために作ったか」まで見える事例集。</h2>
+            <p class="eyebrow">Request Map</p>
+            <h2 id="request-title">依頼がまだ曖昧でも、ここで入口を選べる。</h2>
           </div>
           <p>
-            AmorWorksの制作物は、見た目を整えるだけでは終わりません。事業内容、問い合わせ、予約、採用、更新作業など、
-            実際の業務が前に進む導線まで含めて設計します。
+            「サイトを作りたい」「業務を楽にしたい」「AIを使いたい」「今ある導線を直したい」。
+            言葉になる前の相談でも、目的に合わせて最初の一歩を設計します。
           </p>
+        </div>
+
+        <div class="section-inner aw-request-grid" aria-label="依頼の入口一覧">
+          <a class="aw-request-card" href="services/" data-reveal data-depth="0.06">
+            <span>Web Production</span>
+            <h3>事業の入口を作る</h3>
+            <p>会社サイト、LP、店舗ページ、採用導線まで、見た目と問い合わせをセットで整えます。</p>
+          </a>
+          <a class="aw-request-card" href="dx-ai/" data-reveal data-depth="0.1">
+            <span>Operational DX</span>
+            <h3>仕事の流れを整える</h3>
+            <p>紙、Excel、LINE、電話で散らばる作業を見える化し、小さな自動化へつなげます。</p>
+          </a>
+          <a class="aw-request-card" href="plans/" data-reveal data-depth="0.14">
+            <span>Plan Design</span>
+            <h3>予算と制作範囲を決める</h3>
+            <p>EconomyからPremiumまで、今の段階に合う制作範囲を選べるよう整理します。</p>
+          </a>
+          <a class="aw-request-card" href="flow/" data-reveal data-depth="0.18">
+            <span>Process</span>
+            <h3>公開までの進め方を知る</h3>
+            <p>ヒアリング、構成、制作、確認、公開後の更新まで、非エンジニアでも進めやすくします。</p>
+          </a>
         </div>
       </section>
 
-      <section class="section latest-works-section" aria-labelledby="latest-works-title">
-        <div class="section-inner">
-          <div class="section-heading">
-            <p class="eyebrow">Latest Cases</p>
-            <h2 id="latest-works-title">最新のビルド事例</h2>
+      <section class="section aw-motion-section" aria-labelledby="motion-title">
+        <div class="section-inner aw-motion-grid">
+          <div class="aw-motion-copy" data-reveal>
+            <p class="eyebrow">3D Scroll Experience</p>
+            <h2 id="motion-title">見るだけのサイトから、動きで記憶に残る入口へ。</h2>
             <p>
-              公開中の事例から、新しいものを3件まで表示しています。
-              さらに詳しく見たい場合は、事例集ページで制作内容と設計意図を確認できます。
+              Three.jsの3Dクリスタル、スクロール連動、奥行きのあるカード表現で、AmorWorksの制作力そのものをTOPで伝えます。
+              派手さだけではなく、相談まで迷わない導線を中心に置いています。
+            </p>
+          </div>
+          <div class="aw-orbit-list" aria-label="成長導線" data-reveal>
+            <div><span>01</span><strong>Imagine</strong><small>やりたいことを言葉にする</small></div>
+            <div><span>02</span><strong>Design</strong><small>サイトと業務導線を設計する</small></div>
+            <div><span>03</span><strong>Build</strong><small>公開できる形へ制作する</small></div>
+            <div><span>04</span><strong>Grow</strong><small>更新、DX、AIへ育てる</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section aw-works-section" aria-labelledby="latest-works-title">
+        <div class="section-inner">
+          <div class="aw-split-heading" data-reveal>
+            <div>
+              <p class="eyebrow">Latest Build Cases</p>
+              <h2 id="latest-works-title">最新のビルド事例</h2>
+            </div>
+            <p>
+              公開中の事例から3件まで表示します。さらに詳しく見たい場合は、下層の事例集で制作内容と設計意図を確認できます。
             </p>
           </div>
 
-          <div class="work-grid" aria-label="最新のビルド事例">
-            <a class="work-card latest-work-card" href="works/index.html#case-amor-alice">
+          <div class="work-grid aw-case-grid" aria-label="最新のビルド事例">
+            <a class="work-card latest-work-card" href="works/index.html#case-amor-alice" data-reveal data-depth="0.07">
               <img src="assets/case-amoralice.jpg" alt="Amor Aliceの世界観を表現したホームページビジュアル">
               <div class="work-body">
-                <div class="work-meta"><span>Premium</span><span>Brand</span><span>Reservation</span></div>
+                <div class="work-meta"><span>Brand</span><span>Reservation</span><span>Worldview</span></div>
                 <h3>Amor Alice</h3>
                 <p>世界観、見学相談、予約導線までを一体で整えたブランド体験型のホームページ事例です。</p>
                 <span class="latest-card-action">事例ページで詳しく見る</span>
               </div>
             </a>
 
-            <a class="work-card latest-work-card" href="works/index.html#case-shibata-shoji">
+            <a class="work-card latest-work-card" href="works/index.html#case-shibata-shoji" data-reveal data-depth="0.11">
               <img src="assets/case-shibata-current.png" alt="柴田商事のトラックが並ぶホームページビジュアル">
               <div class="work-body">
-                <div class="work-meta"><span>Standard</span><span>Logistics</span><span>DX入口</span></div>
+                <div class="work-meta"><span>Logistics</span><span>Company</span><span>DX入口</span></div>
                 <h3>柴田商事</h3>
                 <p>物流の現場力を、問い合わせ・採用・業務改善につながる入口として整理した会社サイトです。</p>
                 <span class="latest-card-action">事例ページで詳しく見る</span>
               </div>
             </a>
 
-            <a class="work-card latest-work-card" href="works/index.html#case-stg">
+            <a class="work-card latest-work-card" href="works/index.html#case-stg" data-reveal data-depth="0.15">
               <img src="assets/case-stg.png" alt="株式会社STGのホームページビジュアル">
               <div class="work-body">
-                <div class="work-meta"><span>Standard</span><span>Company</span><span>Recruit</span></div>
+                <div class="work-meta"><span>Company</span><span>Recruit</span><span>Trust</span></div>
                 <h3>株式会社STG</h3>
                 <p>理念、業務内容、施工実績、求人、代表メッセージを相談導線へまとめた会社サイトです。</p>
                 <span class="latest-card-action">事例ページで詳しく見る</span>
@@ -160,61 +201,61 @@
             </a>
           </div>
 
-          <div class="section-more">
+          <div class="section-more" data-reveal>
             <a class="button primary" href="works/">事例集をもっと見る</a>
           </div>
         </div>
       </section>
 
-      <section class="section page-gateway-section" aria-labelledby="gateway-title">
+      <section class="section aw-gateway-section" aria-labelledby="gateway-title">
         <div class="section-inner">
-          <div class="section-heading">
-            <p class="eyebrow">Explore / Section Pages</p>
-            <h2 id="gateway-title">必要な情報へ、迷わず進めるように。</h2>
+          <div class="aw-split-heading" data-reveal>
+            <div>
+              <p class="eyebrow">Explore / Section Pages</p>
+              <h2 id="gateway-title">必要な情報へ、迷わず進める。</h2>
+            </div>
             <p>
-              Topは営業用LPとして全体像を伝えます。詳しく知りたい内容は、下の各ページで整理しています。
-              英語の短いサマリーも添えて、ブランドとしての見え方を高めています。
+              TOPは入口です。理念、できること、料金、DX・AI、制作の流れは、下層ページで深く整理しています。
             </p>
           </div>
 
-          <div class="gateway-grid" aria-label="詳細ページ一覧">
-            <a class="gateway-card" href="philosophy/">
+          <div class="gateway-grid aw-gateway-grid" aria-label="詳細ページ一覧">
+            <a class="gateway-card" href="philosophy/" data-reveal>
               <span>Philosophy</span>
               <h3>理念・考え方</h3>
-              <p>作って終わりではなく、事業とともに育てるWeb制作の考え方を整理しています。</p>
+              <p>事業とともに育てるWeb制作の考え方を整理しています。</p>
             </a>
-            <a class="gateway-card" href="services/">
+            <a class="gateway-card" href="services/" data-reveal>
               <span>Services</span>
               <h3>できること</h3>
               <p>ホームページ制作、DX・AI、Webアプリ、運用サポートを分けて見られます。</p>
             </a>
-            <a class="gateway-card" href="plans/">
+            <a class="gateway-card" href="plans/" data-reveal>
               <span>Plans</span>
               <h3>料金プラン</h3>
               <p>5つの制作プランの違い、向いている人、追加相談になる範囲を確認できます。</p>
             </a>
-            <a class="gateway-card" href="dx-ai/">
+            <a class="gateway-card" href="dx-ai/" data-reveal>
               <span>DX / AI</span>
               <h3>DX・AI支援</h3>
-              <p>現場理解から小さく改善し、必要に応じてAIや自動化へ育てる流れを見られます。</p>
+              <p>現場理解から小さく改善し、AIや自動化へ育てる流れを見られます。</p>
             </a>
-            <a class="gateway-card" href="flow/">
+            <a class="gateway-card" href="flow/" data-reveal>
               <span>Process</span>
               <h3>制作の流れ</h3>
-              <p>相談、構成、制作、確認、公開まで、非エンジニアでも進めやすい順番で整理しています。</p>
+              <p>相談、構成、制作、確認、公開までの順番を確認できます。</p>
             </a>
           </div>
         </div>
       </section>
-
-      <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <section class="section contact-section aw-contact-section" id="contact" aria-labelledby="contact-title">
         <div class="section-inner">
-          <div class="section-heading contact-heading">
-            <p class="eyebrow">Contact & Application</p>
-            <h2 id="contact-title">各種連絡先・お申し込み</h2>
+          <div class="section-heading contact-heading" data-reveal>
+            <p class="eyebrow">Contact & Application / Start Here</p>
+            <h2 id="contact-title">ここから、すべての依頼が始まります。</h2>
             <p>
-              ホームページ制作、DX・AI導入、Webアプリ、運用サポートの相談はこちらから受け付けます。
-              公式LINEは作成中です。フォームは指定メールアドレスへ通知する設定にしています。
+              ホームページ、DX・AI、Webアプリ、運用サポート、まだ名前のない相談まで。
+              分かる範囲で入力してください。内容を見て、最初に整理するべきことから返します。
             </p>
           </div>
 
@@ -352,6 +393,7 @@
       </div>
     </footer>
 
+    <script src="visuals.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
