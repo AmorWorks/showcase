@@ -54,13 +54,26 @@ let heroVisualFrame = 0;
 const syncHeroVisual = () => {
   heroVisualFrame = 0;
   if (!heroStage || !heroVisual || prefersReducedMotion) {
-    if (heroVisual) heroVisual.style.setProperty("--hero-shift", "0px");
+    if (heroStage) {
+      heroStage.style.setProperty("--hero-night-opacity", "0");
+      heroStage.style.setProperty("--hero-veil-opacity", "0.94");
+      heroStage.style.setProperty("--hero-pan-x", "0px");
+      heroStage.style.setProperty("--hero-pan-y", "0px");
+      heroStage.style.setProperty("--hero-scale", "1.035");
+    }
     return;
   }
 
   const rect = heroStage.getBoundingClientRect();
-  const progress = Math.min(Math.max(-rect.top / Math.max(rect.height, 1), 0), 1);
-  heroVisual.style.setProperty("--hero-shift", `${(progress * 120).toFixed(2)}px`);
+  const travel = Math.max(rect.height - window.innerHeight, rect.height * 0.34, 1);
+  const progress = Math.min(Math.max(-rect.top / travel, 0), 1);
+  const eased = progress * progress * (3 - 2 * progress);
+
+  heroStage.style.setProperty("--hero-night-opacity", eased.toFixed(3));
+  heroStage.style.setProperty("--hero-veil-opacity", (0.94 - eased * 0.18).toFixed(3));
+  heroStage.style.setProperty("--hero-pan-x", `${(-26 * eased).toFixed(2)}px`);
+  heroStage.style.setProperty("--hero-pan-y", `${(22 * eased).toFixed(2)}px`);
+  heroStage.style.setProperty("--hero-scale", (1.035 + eased * 0.045).toFixed(3));
 };
 
 const requestHeroVisualSync = () => {

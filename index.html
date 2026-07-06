@@ -15,7 +15,7 @@
     >
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://amorworks.github.io/showcase/">
-    <meta property="og:image" content="https://amorworks.github.io/showcase/assets/sc-hero-watercolor.jpg">
+    <meta property="og:image" content="https://amorworks.github.io/showcase/assets/sc-hero-day.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="assets/amorworks-logo.jpg">
     <link rel="stylesheet" href="styles.css">
@@ -46,15 +46,12 @@
     <main id="top" class="home-stage">
       <section class="aw-hero" aria-labelledby="hero-title" data-hero-stage>
         <div class="aw-hero-visual-field" data-hero-visual aria-hidden="true">
-          <figure class="aw-hero-art">
-            <img src="assets/sc-hero-watercolor.jpg" alt="" fetchpriority="high" decoding="async">
+          <figure class="aw-hero-art aw-hero-art-day">
+            <img src="assets/sc-hero-day.jpg" alt="" fetchpriority="high" decoding="async">
           </figure>
-          <div class="aw-hero-icon-row">
-            <span><img src="assets/sc-icon-ai.webp" alt="" width="64" height="64"></span>
-            <span><img src="assets/sc-icon-dx.webp" alt="" width="64" height="64"></span>
-            <span><img src="assets/sc-icon-web.webp" alt="" width="64" height="64"></span>
-            <span><img src="assets/sc-icon-code.webp" alt="" width="64" height="64"></span>
-          </div>
+          <figure class="aw-hero-art aw-hero-art-night">
+            <img src="assets/sc-hero-night.jpg" alt="" decoding="async">
+          </figure>
         </div>
         <div class="aw-hero-gridline" aria-hidden="true"></div>
         <div class="section-inner aw-hero-inner">
@@ -65,6 +62,10 @@
               ホームページ制作、DX・AI、業務アプリ、運用改善まで。
               前半ではホームページ制作を決めるための情報を、後半では事業DX・業務改善へ広げる流れを整理しています。
             </p>
+            <div class="aw-hero-poster" aria-hidden="true">
+              <img class="aw-hero-poster-day" src="assets/sc-hero-day.jpg" alt="" decoding="async">
+              <img class="aw-hero-poster-night" src="assets/sc-hero-night.jpg" alt="" decoding="async">
+            </div>
             <div class="hero-actions" aria-label="主な導線">
               <a class="button primary" href="#contact">依頼相談を送る</a>
               <a class="button secondary" href="works/">ビルド事例を見る</a>
@@ -73,40 +74,35 @@
 
           <aside class="aw-hero-panel" data-reveal data-depth="0.12" aria-label="AmorWorksの入口">
             <div class="aw-hero-panel-head">
-              <img class="aw-panel-icon" src="assets/sc-icon-dashboard.webp" alt="" width="72" height="72">
               <span>Start From Here</span>
             </div>
             <strong>まずHP制作。そこから事業DXへ。</strong>
             <p>静的なHTML・CSS・JSで軽く表示しながら、ブランド、制作、DX、運用までをひとつの入口に整理します。非エンジニアでも、分かる範囲の言葉で始められる入口です。</p>
             <div class="aw-hero-mini-stats" aria-label="入口の整理">
-              <div><img src="assets/sc-icon-web.webp" alt="" width="48" height="48"><strong>HP</strong><small>前半で制作判断</small></div>
-              <div><img src="assets/sc-icon-dx.webp" alt="" width="48" height="48"><strong>DX</strong><small>後半で業務改善</small></div>
-              <div><img src="assets/sc-icon-support.webp" alt="" width="48" height="48"><strong>1</strong><small>入口フォーム</small></div>
+              <div><strong>HP</strong><small>前半で制作判断</small></div>
+              <div><strong>DX</strong><small>後半で業務改善</small></div>
+              <div><strong>1</strong><small>入口フォーム</small></div>
             </div>
           </aside>
         </div>
 
         <div class="section-inner aw-capability-dock" aria-label="AmorWorksで相談できること">
           <a href="#homepage-production" data-reveal data-depth="0.05">
-            <img class="aw-card-icon" src="assets/sc-icon-web.webp" alt="" width="76" height="76" loading="lazy">
             <span>01 / HP Production</span>
             <strong>ホームページ制作パート</strong>
             <small>新規制作、リニューアル、料金、流れを前半で確認。</small>
           </a>
           <a href="works/" data-reveal data-depth="0.09">
-            <img class="aw-card-icon" src="assets/sc-icon-dashboard.webp" alt="" width="76" height="76" loading="lazy">
             <span>02 / Cases</span>
             <strong>ビルド事例</strong>
             <small>公開中のHP制作事例から、設計意図を確認する。</small>
           </a>
           <a href="plans/" data-reveal data-depth="0.13">
-            <img class="aw-card-icon" src="assets/sc-icon-analytics.webp" alt="" width="76" height="76" loading="lazy">
             <span>03 / Plans</span>
             <strong>料金プラン</strong>
             <small>今の事業段階に合う制作範囲を選ぶ。</small>
           </a>
           <a href="#business-dx" data-reveal data-depth="0.17">
-            <img class="aw-card-icon" src="assets/sc-icon-dx.webp" alt="" width="76" height="76" loading="lazy">
             <span>04 / Business DX</span>
             <strong>事業DXパート</strong>
             <small>HPの先にある業務改善、AI、自動化へ進む。</small>
@@ -133,25 +129,21 @@
 
         <div class="section-inner aw-request-grid" aria-label="ホームページ制作の入口一覧">
           <a class="aw-request-card" href="services/" data-reveal data-depth="0.06">
-            <img class="aw-card-icon" src="assets/sc-icon-web.webp" alt="" width="76" height="76" loading="lazy">
             <span>New Site</span>
             <h3>新しくHPを作る</h3>
             <p>会社サイト、LP、店舗ページ、採用導線まで、信頼される入口として設計します。</p>
           </a>
           <a class="aw-request-card" href="services/" data-reveal data-depth="0.1">
-            <img class="aw-card-icon" src="assets/sc-icon-design.webp" alt="" width="76" height="76" loading="lazy">
             <span>Renewal</span>
             <h3>今あるHPを直す</h3>
             <p>情報が古い、問い合わせにつながらない、見た目が弱い状態を整理します。</p>
           </a>
           <a class="aw-request-card" href="plans/" data-reveal data-depth="0.14">
-            <img class="aw-card-icon" src="assets/sc-icon-analytics.webp" alt="" width="76" height="76" loading="lazy">
             <span>Plan / Price</span>
             <h3>料金と制作範囲を選ぶ</h3>
             <p>EconomyからPremiumまで、今の事業段階に合う作り方を確認できます。</p>
           </a>
           <a class="aw-request-card" href="flow/" data-reveal data-depth="0.18">
-            <img class="aw-card-icon" src="assets/sc-icon-automation.webp" alt="" width="76" height="76" loading="lazy">
             <span>Process</span>
             <h3>公開までの進め方を知る</h3>
             <p>ヒアリング、構成、制作、確認、公開後の更新まで、非エンジニアでも進めやすくします。</p>
@@ -235,25 +227,21 @@
 
           <div class="gateway-grid aw-gateway-grid aw-homepage-links-grid" aria-label="ホームページ制作の詳細ページ一覧">
             <a class="gateway-card" href="services/" data-reveal>
-              <img class="aw-card-icon" src="assets/sc-icon-code.webp" alt="" width="76" height="76" loading="lazy">
               <span>Services</span>
               <h3>できること</h3>
               <p>ホームページ制作で整えられる内容と、相談できる範囲を確認できます。</p>
             </a>
             <a class="gateway-card" href="plans/" data-reveal>
-              <img class="aw-card-icon" src="assets/sc-icon-analytics.webp" alt="" width="76" height="76" loading="lazy">
               <span>Plans</span>
               <h3>料金プラン</h3>
               <p>5つの制作プランの違い、向いている人、追加相談になる範囲を確認できます。</p>
             </a>
             <a class="gateway-card" href="flow/" data-reveal>
-              <img class="aw-card-icon" src="assets/sc-icon-automation.webp" alt="" width="76" height="76" loading="lazy">
               <span>Process</span>
               <h3>制作の流れ</h3>
               <p>相談、構成、制作、確認、公開までの順番を確認できます。</p>
             </a>
             <a class="gateway-card" href="philosophy/" data-reveal>
-              <img class="aw-card-icon" src="assets/sc-icon-design.webp" alt="" width="76" height="76" loading="lazy">
               <span>Philosophy</span>
               <h3>理念・考え方</h3>
               <p>事業とともに育てるWeb制作の考え方を整理しています。</p>
@@ -277,10 +265,10 @@
             </div>
           </div>
           <div class="aw-orbit-list" aria-label="事業DXの成長導線" data-reveal>
-            <div><img class="aw-orbit-icon" src="assets/sc-icon-web.webp" alt="" width="58" height="58" loading="lazy"><span>01</span><strong>Website</strong><small>信頼される入口を作る</small></div>
-            <div><img class="aw-orbit-icon" src="assets/sc-icon-cloud.webp" alt="" width="58" height="58" loading="lazy"><span>02</span><strong>Flow</strong><small>問い合わせ・予約・採用の流れを整理する</small></div>
-            <div><img class="aw-orbit-icon" src="assets/sc-icon-data.webp" alt="" width="58" height="58" loading="lazy"><span>03</span><strong>App</strong><small>GASやWebアプリで繰り返し作業を軽くする</small></div>
-            <div><img class="aw-orbit-icon" src="assets/sc-icon-ai.webp" alt="" width="58" height="58" loading="lazy"><span>04</span><strong>AI</strong><small>分析、自動化、改善提案へ育てる</small></div>
+            <div><span>01</span><strong>Website</strong><small>信頼される入口を作る</small></div>
+            <div><span>02</span><strong>Flow</strong><small>問い合わせ・予約・採用の流れを整理する</small></div>
+            <div><span>03</span><strong>App</strong><small>GASやWebアプリで繰り返し作業を軽くする</small></div>
+            <div><span>04</span><strong>AI</strong><small>分析、自動化、改善提案へ育てる</small></div>
           </div>
         </div>
       </section>
