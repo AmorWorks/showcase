@@ -3490,8 +3490,9 @@ body.home-page {
   --hero-pan-y: 0px;
   --hero-scale: 1.035;
   --hero-veil-opacity: 0.94;
-  --hero-mobile-lift: 0px;
-  --hero-mobile-scale: 1.01;
+  --hero-mobile-opacity: 0.96;
+  --hero-mobile-shift: 0px;
+  --hero-mobile-scale: 1.02;
   min-height: 132svh;
   background: #fffaf2;
 }
@@ -3536,12 +3537,18 @@ body.home-page {
   transition: opacity 120ms linear;
 }
 
-.aw-hero-art img {
+.aw-hero-art img,
+.aw-hero-art video {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   filter: saturate(1.03) contrast(1.02);
+}
+
+.aw-hero-art video {
+  background: #fffaf2;
 }
 
 .aw-hero-art-day {
@@ -3552,52 +3559,9 @@ body.home-page {
   opacity: var(--hero-night-opacity);
 }
 
-.aw-hero-mobile-art {
+.aw-hero-art-mobile {
   display: none;
-  position: relative;
-  aspect-ratio: 1 / 1.02;
-  margin: 24px 0 26px;
-  overflow: hidden;
-  border: 1px solid rgba(16, 45, 85, 0.13);
-  border-radius: 8px;
-  background: #fffaf2;
-  box-shadow: 0 22px 52px rgba(16, 45, 85, 0.18);
-  transform: translate3d(0, var(--hero-mobile-lift), 0);
-  transform-origin: center;
-  will-change: transform;
-}
-
-.aw-hero-mobile-art::before,
-.aw-hero-mobile-art::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.aw-hero-mobile-art::before {
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.32), transparent 28%, rgba(255, 255, 255, 0.14) 56%, transparent 78%),
-    radial-gradient(circle at 84% 18%, rgba(255, 255, 255, 0.24), transparent 28%);
-  z-index: 2;
-}
-
-.aw-hero-mobile-art::after {
-  z-index: 3;
-  border: 1px solid rgba(255, 255, 255, 0.44);
-  border-radius: inherit;
-  box-shadow: inset 0 0 0 1px rgba(9, 32, 68, 0.04);
-}
-
-.aw-hero-mobile-art img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 56%;
-  transform: scale(var(--hero-mobile-scale));
-  filter: saturate(1.04) contrast(1.02);
-  will-change: transform;
+  opacity: 0;
 }
 
 .aw-hero-panel-head {
@@ -3645,26 +3609,53 @@ body.home-page {
 
 @media (max-width: 620px) {
   .aw-hero {
-    min-height: 116svh;
-    padding-top: 96px;
+    min-height: 122svh;
+    padding: 96px 0 48px;
+  }
+
+  .aw-hero::after {
+    background:
+      radial-gradient(circle at 8% 18%, rgba(22, 141, 164, 0.08), transparent 26%),
+      radial-gradient(circle at 92% 9%, rgba(143, 91, 176, 0.09), transparent 28%),
+      linear-gradient(180deg, rgba(255, 250, 242, 0.06) 0%, rgba(255, 250, 242, 0.28) 68%, rgba(255, 250, 242, 0.9) 100%);
   }
 
   .aw-hero-visual-field {
-    display: none;
+    display: block;
+    opacity: 1;
   }
 
   .aw-hero-visual-field::before {
     background:
-      linear-gradient(180deg, rgba(255, 250, 242, 0.64) 0%, rgba(255, 250, 242, 0.78) 38%, rgba(255, 250, 242, 0.96) 73%, rgba(255, 250, 242, 1) 100%),
-      linear-gradient(90deg, rgba(255, 250, 242, 0.8), rgba(255, 250, 242, 0.24), rgba(255, 250, 242, 0.48));
+      linear-gradient(180deg, rgba(255, 250, 242, 0.88) 0%, rgba(255, 250, 242, 0.68) 25%, rgba(255, 250, 242, 0.22) 48%, rgba(255, 250, 242, 0.5) 70%, rgba(255, 250, 242, 0.96) 100%),
+      linear-gradient(90deg, rgba(255, 250, 242, 0.78), rgba(255, 250, 242, 0.14), rgba(255, 250, 242, 0.46));
+    opacity: 1;
   }
 
-  .aw-hero-art img {
-    object-position: 51% 0%;
+  .aw-hero-visual-field::after {
+    opacity: 0.12;
   }
 
-  .aw-hero-mobile-art {
+  .aw-hero-art-day,
+  .aw-hero-art-night {
+    display: none;
+  }
+
+  .aw-hero-art-mobile {
     display: block;
+    inset: -7svh 0 auto;
+    width: 100%;
+    height: 125svh;
+    aspect-ratio: auto;
+    opacity: var(--hero-mobile-opacity);
+    transform: translate3d(0, var(--hero-mobile-shift), 0) scale(var(--hero-mobile-scale));
+    transform-origin: center 40%;
+    will-change: transform, opacity;
+  }
+
+  .aw-hero-art-mobile video {
+    object-position: center 48%;
+    filter: saturate(1.08) contrast(1.03) brightness(1.01);
   }
 
   .aw-hero h1 {
