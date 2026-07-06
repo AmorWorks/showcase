@@ -63,7 +63,6 @@ const syncHeroVisual = () => {
       heroStage.style.setProperty("--hero-pan-x", "0px");
       heroStage.style.setProperty("--hero-pan-y", "0px");
       heroStage.style.setProperty("--hero-scale", "1.035");
-      heroStage.style.setProperty("--hero-mobile-opacity", "1");
       heroStage.style.setProperty("--hero-mobile-shift", "0px");
       heroStage.style.setProperty("--hero-mobile-scale", "1.02");
     }
@@ -71,7 +70,8 @@ const syncHeroVisual = () => {
   }
 
   const rect = heroStage.getBoundingClientRect();
-  const travel = Math.max(rect.height - window.innerHeight, rect.height * 0.34, 1);
+  const visualHeight = Math.max(heroVisual.getBoundingClientRect().height, window.innerHeight * 0.62, 1);
+  const travel = Math.max(visualHeight * 0.72, window.innerHeight * 0.42, 1);
   const progress = Math.min(Math.max(-rect.top / travel, 0), 1);
   const eased = smoothProgress(progress);
   const mobileLiftProgress = smoothProgress(clampProgress(progress * 1.2));
@@ -81,7 +81,6 @@ const syncHeroVisual = () => {
   heroStage.style.setProperty("--hero-pan-x", `${(-26 * eased).toFixed(2)}px`);
   heroStage.style.setProperty("--hero-pan-y", `${(22 * eased).toFixed(2)}px`);
   heroStage.style.setProperty("--hero-scale", (1.035 + eased * 0.045).toFixed(3));
-  heroStage.style.setProperty("--hero-mobile-opacity", (1 - mobileLiftProgress * 0.04).toFixed(3));
   heroStage.style.setProperty("--hero-mobile-shift", `${(-34 * mobileLiftProgress).toFixed(2)}px`);
   heroStage.style.setProperty("--hero-mobile-scale", (1.02 + mobileLiftProgress * 0.035).toFixed(3));
 };
