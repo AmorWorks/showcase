@@ -63,7 +63,7 @@ const syncHeroVisual = () => {
       heroStage.style.setProperty("--hero-pan-x", "0px");
       heroStage.style.setProperty("--hero-pan-y", "0px");
       heroStage.style.setProperty("--hero-scale", "1.035");
-      heroStage.style.setProperty("--hero-mobile-opacity", "0.96");
+      heroStage.style.setProperty("--hero-mobile-opacity", "1");
       heroStage.style.setProperty("--hero-mobile-shift", "0px");
       heroStage.style.setProperty("--hero-mobile-scale", "1.02");
     }
@@ -81,7 +81,7 @@ const syncHeroVisual = () => {
   heroStage.style.setProperty("--hero-pan-x", `${(-26 * eased).toFixed(2)}px`);
   heroStage.style.setProperty("--hero-pan-y", `${(22 * eased).toFixed(2)}px`);
   heroStage.style.setProperty("--hero-scale", (1.035 + eased * 0.045).toFixed(3));
-  heroStage.style.setProperty("--hero-mobile-opacity", (0.96 - mobileLiftProgress * 0.08).toFixed(3));
+  heroStage.style.setProperty("--hero-mobile-opacity", (1 - mobileLiftProgress * 0.04).toFixed(3));
   heroStage.style.setProperty("--hero-mobile-shift", `${(-34 * mobileLiftProgress).toFixed(2)}px`);
   heroStage.style.setProperty("--hero-mobile-scale", (1.02 + mobileLiftProgress * 0.035).toFixed(3));
 };

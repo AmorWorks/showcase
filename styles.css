@@ -3490,7 +3490,7 @@ body.home-page {
   --hero-pan-y: 0px;
   --hero-scale: 1.035;
   --hero-veil-opacity: 0.94;
-  --hero-mobile-opacity: 0.96;
+  --hero-mobile-opacity: 1;
   --hero-mobile-shift: 0px;
   --hero-mobile-scale: 1.02;
   min-height: 132svh;
@@ -3564,6 +3564,10 @@ body.home-page {
   opacity: 0;
 }
 
+.aw-hero-post-cta {
+  display: none;
+}
+
 .aw-hero-panel-head {
   display: block;
 }
@@ -3609,31 +3613,37 @@ body.home-page {
 
 @media (max-width: 620px) {
   .aw-hero {
-    min-height: 122svh;
-    padding: 96px 0 48px;
+    min-height: auto;
+    padding: 0 0 52px;
   }
 
+  .aw-hero::before,
   .aw-hero::after {
-    background:
-      radial-gradient(circle at 8% 18%, rgba(22, 141, 164, 0.08), transparent 26%),
-      radial-gradient(circle at 92% 9%, rgba(143, 91, 176, 0.09), transparent 28%),
-      linear-gradient(180deg, rgba(255, 250, 242, 0.06) 0%, rgba(255, 250, 242, 0.28) 68%, rgba(255, 250, 242, 0.9) 100%);
+    display: none;
   }
 
   .aw-hero-visual-field {
+    position: relative;
     display: block;
+    inset: auto;
+    z-index: 1;
+    width: 100%;
+    height: calc(100svh - 126px);
+    min-height: 500px;
+    max-height: 760px;
     opacity: 1;
+    transform: none;
+    box-shadow: 0 26px 76px rgba(16, 45, 85, 0.14);
   }
 
   .aw-hero-visual-field::before {
     background:
-      linear-gradient(180deg, rgba(255, 250, 242, 0.88) 0%, rgba(255, 250, 242, 0.68) 25%, rgba(255, 250, 242, 0.22) 48%, rgba(255, 250, 242, 0.5) 70%, rgba(255, 250, 242, 0.96) 100%),
-      linear-gradient(90deg, rgba(255, 250, 242, 0.78), rgba(255, 250, 242, 0.14), rgba(255, 250, 242, 0.46));
+      linear-gradient(180deg, rgba(255, 250, 242, 0.08) 0%, rgba(255, 250, 242, 0.02) 48%, rgba(255, 250, 242, 0.18) 100%);
     opacity: 1;
   }
 
   .aw-hero-visual-field::after {
-    opacity: 0.12;
+    opacity: 0.04;
   }
 
   .aw-hero-art-day,
@@ -3643,9 +3653,9 @@ body.home-page {
 
   .aw-hero-art-mobile {
     display: block;
-    inset: -7svh 0 auto;
+    inset: 0;
     width: 100%;
-    height: 125svh;
+    height: 100%;
     aspect-ratio: auto;
     opacity: var(--hero-mobile-opacity);
     transform: translate3d(0, var(--hero-mobile-shift), 0) scale(var(--hero-mobile-scale));
@@ -3654,8 +3664,34 @@ body.home-page {
   }
 
   .aw-hero-art-mobile video {
-    object-position: center 48%;
+    object-position: center center;
     filter: saturate(1.08) contrast(1.03) brightness(1.01);
+  }
+
+  .aw-hero-post-cta {
+    position: relative;
+    z-index: 3;
+    display: block;
+    padding-top: 18px;
+    padding-bottom: 4px;
+  }
+
+  .aw-hero-post-cta .button {
+    width: 100%;
+    min-height: 56px;
+    box-shadow: 0 16px 42px rgba(185, 135, 37, 0.22);
+  }
+
+  .aw-hero-gridline {
+    display: none;
+  }
+
+  .aw-hero-inner {
+    padding-top: 34px;
+  }
+
+  .aw-hero-copy .hero-actions {
+    display: none;
   }
 
   .aw-hero h1 {
