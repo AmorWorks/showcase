@@ -308,8 +308,31 @@ a {
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
+.work-detail-link {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+}
+
+.work-detail-link:focus-visible {
+  outline: 3px solid rgba(184, 144, 53, 0.35);
+  outline-offset: -3px;
+}
+
+.latest-direct-link-wrap {
+  padding: 0 22px 22px;
+}
+
+.latest-direct-link {
+  justify-content: flex-start;
+  width: auto;
+}
+
 .latest-work-card:hover,
-.latest-work-card:focus-visible {
+.latest-work-card:focus-visible,
+.latest-work-card:focus-within {
   transform: translateY(-2px);
   border-color: rgba(184, 144, 53, 0.58);
   box-shadow: 0 20px 48px rgba(7, 31, 73, 0.14);
@@ -325,7 +348,8 @@ a {
 }
 
 .latest-work-card:hover .latest-card-action,
-.latest-work-card:focus-visible .latest-card-action {
+.latest-work-card:focus-visible .latest-card-action,
+.latest-work-card:focus-within .latest-card-action {
   color: var(--green);
 }
 
@@ -2623,7 +2647,8 @@ body.home-page {
 .home-page .gateway-card:hover,
 .home-page .gateway-card:focus-visible,
 .home-page .latest-work-card:hover,
-.home-page .latest-work-card:focus-visible {
+.home-page .latest-work-card:focus-visible,
+.home-page .latest-work-card:focus-within {
   transform: translate3d(0, calc(var(--parallax-y, 0px) - 3px), 0);
   border-color: rgba(240, 201, 120, 0.58);
   outline: none;
@@ -3275,7 +3300,8 @@ body.home-page {
 .home-page .gateway-card:hover,
 .home-page .gateway-card:focus-visible,
 .home-page .latest-work-card:hover,
-.home-page .latest-work-card:focus-visible {
+.home-page .latest-work-card:focus-visible,
+.home-page .latest-work-card:focus-within {
   border-color: rgba(22, 141, 164, 0.4);
   box-shadow: 0 26px 68px rgba(16, 45, 85, 0.16);
 }
@@ -3366,6 +3392,13 @@ body.home-page {
   color: var(--home-cyan);
 }
 
+.home-page .work-body .case-use {
+  margin: 2px 0 10px;
+  color: var(--home-text);
+  font-weight: 800;
+  line-height: 1.45;
+}
+
 .home-page .aw-contact-section {
   color: #f8f4ea;
   background:
@@ -3410,6 +3443,43 @@ body.home-page {
 .home-page .aw-contact-section .checkbox-grid label {
   background: rgba(255, 255, 255, 0.075);
   border-color: rgba(255, 255, 255, 0.12);
+}
+
+.aw-faq-section {
+  border-top: 1px solid rgba(16, 45, 85, 0.1);
+  background:
+    radial-gradient(circle at 14% 14%, rgba(22, 141, 164, 0.1), transparent 27%),
+    linear-gradient(180deg, #fbfdff, #fffaf2);
+}
+
+.aw-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.aw-faq-grid article {
+  display: grid;
+  gap: 10px;
+  padding: 22px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(255, 250, 242, 0.82)),
+    rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--home-line);
+  border-radius: 8px;
+  box-shadow: 0 18px 46px rgba(16, 45, 85, 0.09);
+}
+
+.aw-faq-grid h3 {
+  margin: 0;
+  color: var(--home-text);
+  font-size: 1.04rem;
+  line-height: 1.55;
+}
+
+.aw-faq-grid p {
+  margin: 0;
+  color: var(--home-muted);
 }
 
 @media (max-width: 1180px) {
@@ -3647,17 +3717,20 @@ body.home-page .home-stage {
 .aw-hero-post-cta {
   position: relative;
   z-index: 3;
-  display: block;
-  margin-top: clamp(520px, 82svh, 900px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 0;
   padding-top: 22px;
-  padding-bottom: 8px;
+  padding-bottom: 18px;
   background: #fffaf2;
   box-shadow: 0 0 0 100vmax #fffaf2;
   clip-path: inset(0 -100vmax);
 }
 
 .aw-hero-post-cta .button {
-  width: min(420px, 100%);
+  width: auto;
+  min-width: min(250px, 100%);
   min-height: 56px;
   box-shadow: 0 16px 42px rgba(185, 135, 37, 0.22);
 }
@@ -3665,7 +3738,8 @@ body.home-page .home-stage {
 .aw-hero-inner {
   position: relative;
   z-index: 3;
-  padding-top: 34px;
+  align-items: start;
+  padding-top: 26px;
   background: #fffaf2;
   box-shadow: 0 0 0 100vmax #fffaf2;
   clip-path: inset(0 -100vmax);
@@ -3676,11 +3750,31 @@ body.home-page .home-stage {
 }
 
 .aw-hero-mini-stats div {
-  display: block;
+  display: grid;
+  gap: 6px;
+  padding: 10px 0;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid rgba(16, 45, 85, 0.1);
+  border-radius: 0;
+}
+
+.aw-hero-mini-stats {
+  grid-template-columns: 1fr;
+  gap: 0;
 }
 
 .aw-hero-mini-stats strong {
   margin-top: 0;
+  font-family: inherit;
+  font-size: 0.96rem;
+  line-height: 1.45;
+}
+
+.aw-hero-mini-stats small {
+  margin-top: 0;
+  font-size: 0.82rem;
+  line-height: 1.65;
 }
 
 .aw-capability-dock a,
@@ -3753,9 +3847,11 @@ body.home-page .home-stage {
   }
 
   .aw-hero-post-cta {
-    margin-top: 78svh;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 0;
     padding-top: 18px;
-    padding-bottom: 4px;
+    padding-bottom: 12px;
   }
 
   .aw-hero-popup {
@@ -3786,15 +3882,19 @@ body.home-page .home-stage {
   }
 
   .aw-hero-inner {
-    padding-top: 34px;
+    padding-top: 28px;
   }
 
   .aw-hero-copy .hero-actions {
-    display: none;
+    display: grid;
   }
 
   .aw-hero h1 {
     font-size: 2.24rem;
+  }
+
+  .aw-faq-grid {
+    grid-template-columns: 1fr;
   }
 
   .aw-orbit-list div {
