@@ -308,17 +308,12 @@ a {
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
-.work-detail-link {
+.work-card-content {
   display: flex;
   flex: 1;
   flex-direction: column;
   color: inherit;
   text-decoration: none;
-}
-
-.work-detail-link:focus-visible {
-  outline: 3px solid rgba(184, 144, 53, 0.35);
-  outline-offset: -3px;
 }
 
 .latest-direct-link-wrap {
@@ -337,20 +332,6 @@ a {
   border-color: rgba(184, 144, 53, 0.58);
   box-shadow: 0 20px 48px rgba(7, 31, 73, 0.14);
   outline: none;
-}
-
-.latest-card-action {
-  display: inline-flex;
-  margin-top: auto;
-  padding-top: 22px;
-  color: var(--navy);
-  font-weight: 800;
-}
-
-.latest-work-card:hover .latest-card-action,
-.latest-work-card:focus-visible .latest-card-action,
-.latest-work-card:focus-within .latest-card-action {
-  color: var(--green);
 }
 
 .page-gateway-section {
@@ -2813,10 +2794,6 @@ body.home-page {
   border: 1px solid rgba(240, 201, 120, 0.2);
 }
 
-.home-page .latest-card-action {
-  color: var(--home-gold);
-}
-
 .home-page .section-more .button {
   width: auto;
 }
@@ -3386,10 +3363,6 @@ body.home-page {
   color: #815d16;
   background: #fff2cf;
   border-color: rgba(185, 135, 37, 0.2);
-}
-
-.home-page .latest-card-action {
-  color: var(--home-cyan);
 }
 
 .home-page .work-body .case-use {
