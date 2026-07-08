@@ -2709,6 +2709,10 @@ body.home-page {
   line-height: 1.08;
 }
 
+.aw-homepage-links-section #gateway-title span {
+  display: block;
+}
+
 .aw-request-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
