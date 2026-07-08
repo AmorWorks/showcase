@@ -3503,6 +3503,10 @@ body.home-page {
   align-items: start;
 }
 
+.aw-trust-grid-single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .aw-trust-panel {
   display: grid;
   gap: 16px;
