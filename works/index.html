@@ -3,24 +3,27 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ビルド事例 | AmorWorks Showcase</title>
+    <title>ビルド事例 | AmorWorks</title>
     <meta name="description" content="AmorWorksのホームページ制作、問い合わせ導線、予約導線、DXにつながるビルド事例を紹介します。">
-    <meta property="og:title" content="ビルド事例 | AmorWorks Showcase">
+    <meta name="theme-color" content="#071b2d">
+    <meta property="og:title" content="ビルド事例 | AmorWorks">
     <meta property="og:description" content="制作内容だけでなく、事業の何を前に進めるために作ったかを整理した事例ページです。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://amorworks.github.io/showcase/works/">
     <meta property="og:image" content="https://amorworks.github.io/showcase/assets/amorworks-logo.jpg">
     <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://amorworks.github.io/showcase/works/">
     <link rel="icon" href="../assets/amorworks-logo.jpg">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles.css?v=20260807-hero-palette">
   </head>
   <body>
+    <a class="skip-link" href="#main-content">本文へ移動</a>
     <header class="site-header" data-header>
-      <a class="brand" href="../" aria-label="AmorWorks Showcase トップへ">
+      <a class="brand" href="../" aria-label="AmorWorks トップへ">
         <span class="brand-mark" aria-hidden="true">AW</span>
-        <span class="brand-copy"><strong>AmorWorks</strong><small>Showcase</small></span>
+        <span class="brand-copy"><strong>AmorWorks</strong><small>Web / DX / AI</small></span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>Menu</button>
+      <button class="nav-toggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span>Menu</span><i aria-hidden="true"></i></button>
       <nav class="site-nav" id="site-nav" data-nav>
         <a href="../works/">事例</a>
         <a href="../philosophy/">理念</a>
@@ -28,11 +31,11 @@
         <a href="../plans/">料金</a>
         <a href="../dx-ai/">DX・AI</a>
         <a href="../flow/">流れ</a>
-        <a href="../#contact">相談</a>
+        <a class="nav-contact" href="../#contact">相談する</a>
       </nav>
     </header>
 
-    <main class="subpage-main">
+    <main class="subpage-main" id="main-content">
       <section class="subpage-hero is-light-visual">
         <div class="section-inner subpage-hero-grid">
           <div>
@@ -47,10 +50,6 @@
               <a class="button secondary" href="../plans/">料金プランを見る</a>
             </div>
           </div>
-          <div class="language-note">
-            <span lang="en">English brief</span>
-            <p lang="en">Each case is reviewed as a practical business flow: brand impression, trust, inquiry, reservation, and operational improvement.</p>
-          </div>
         </div>
       </section>
 
@@ -64,42 +63,42 @@
 
           <div class="case-detail-grid">
             <article class="case-detail-card" id="case-amor-alice">
-              <img src="../assets/case-amoralice.jpg" alt="Amor Aliceの世界観を表現したホームページビジュアル">
+              <img src="../assets/case-amoralice.webp" alt="Amor Aliceの世界観を表現したホームページビジュアル" loading="lazy" decoding="async" width="1536" height="1024">
               <div class="case-detail-body">
                 <div class="case-detail-meta"><span>Premium</span><span>Brand</span><span>Reservation</span></div>
                 <h3>Amor Alice</h3>
                 <dl class="case-proof-list">
                   <div><dt>課題</dt><dd>世界観・安心感・募集状況が伝わりにくい</dd></div>
                   <div><dt>制作</dt><dd>ブランドサイト、子猫情報、LINE相談導線</dd></div>
-                  <div><dt>改善</dt><dd>見学前の不安を減らし、相談しやすい入口を整備</dd></div>
+                  <div><dt>整えた点</dt><dd>見学前の不安を減らし、相談しやすい入口を整備</dd></div>
                 </dl>
                 <a class="text-button" href="https://catteryamoralice-ragdoll.github.io/" target="_blank" rel="noopener">公開サイトを見る</a>
               </div>
             </article>
 
             <article class="case-detail-card" id="case-shibata-shoji">
-              <img src="../assets/case-shibata-current.png" alt="柴田商事のトラックが並ぶホームページビジュアル">
+              <img src="../assets/case-shibata-public.webp" alt="柴田商事のトラックが並ぶホームページビジュアル（車両番号は非表示）" loading="lazy" decoding="async" width="1672" height="941">
               <div class="case-detail-body">
                 <div class="case-detail-meta"><span>Standard</span><span>Logistics</span><span>Company</span></div>
                 <h3>柴田商事</h3>
                 <dl class="case-proof-list">
                   <div><dt>課題</dt><dd>現場情報・配送先・教育ノウハウが属人化</dd></div>
                   <div><dt>制作</dt><dd>配送DB、納品マップ、業務管理構想</dd></div>
-                  <div><dt>改善</dt><dd>新人教育と日々の判断を標準化しやすい形へ</dd></div>
+                  <div><dt>整えた点</dt><dd>新人教育と日々の判断を標準化しやすい形へ</dd></div>
                 </dl>
                 <a class="text-button" href="https://shibatashoji-logistics.github.io/" target="_blank" rel="noopener">公開サイトを見る</a>
               </div>
             </article>
 
             <article class="case-detail-card" id="case-stg">
-              <img src="../assets/case-stg.png" alt="株式会社STGのホームページビジュアル">
+              <img src="../assets/case-stg.webp" alt="株式会社STGのホームページビジュアル" loading="lazy" decoding="async" width="1717" height="916">
               <div class="case-detail-body">
                 <div class="case-detail-meta"><span>Standard</span><span>Company</span><span>Recruit</span></div>
                 <h3>SAWADA TOMU GROUP</h3>
                 <dl class="case-proof-list">
                   <div><dt>課題</dt><dd>初見で事業内容と信頼感が伝わりにくい</dd></div>
                   <div><dt>制作</dt><dd>企業サイト構成、施工実績、求人導線</dd></div>
-                  <div><dt>改善</dt><dd>問い合わせ・採用につながる情報設計へ</dd></div>
+                  <div><dt>整えた点</dt><dd>問い合わせ・採用につながる情報設計へ</dd></div>
                 </dl>
                 <a class="text-button" href="https://amorworks.github.io/sawada-tomu-group-site/" target="_blank" rel="noopener">公開サイトを見る</a>
               </div>
@@ -149,7 +148,7 @@
 
     <footer class="site-footer">
       <div class="section-inner footer-inner">
-        <p>AmorWorks Showcase</p>
+        <p>AmorWorks</p>
         <p>&copy; <span data-year>2026</span> AmorWorks. Create with heart. Grow together.</p>
       </div>
     </footer>

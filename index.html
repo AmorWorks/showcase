@@ -8,6 +8,7 @@
       name="description"
       content="AmorWorksは、小さな事業の伝わらない・回らないを、ホームページ制作、AI活用、業務整理で使える形に整える制作パートナーです。"
     >
+    <meta name="theme-color" content="#071b2d">
     <meta property="og:title" content="AmorWorks | 小さな事業のWeb制作・AI活用・業務整理">
     <meta
       property="og:description"
@@ -17,107 +18,108 @@
     <meta property="og:url" content="https://amorworks.github.io/showcase/">
     <meta property="og:image" content="https://amorworks.github.io/showcase/assets/sc-hero-day.jpg">
     <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://amorworks.github.io/showcase/">
     <link rel="icon" href="assets/amorworks-logo.jpg">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260807-hero-palette">
   </head>
   <body class="home-page">
+    <a class="skip-link" href="#main-content">本文へ移動</a>
+    <div class="site-progress" aria-hidden="true"><span data-site-progress></span></div>
+
     <header class="site-header" data-header>
-      <a class="brand" href="#top" aria-label="AmorWorks Showcase トップへ">
+      <a class="brand" href="#top" aria-label="AmorWorks トップへ">
         <span class="brand-mark" aria-hidden="true">AW</span>
         <span class="brand-copy">
           <strong>AmorWorks</strong>
-          <small>Showcase</small>
+          <small>Web / DX / AI</small>
         </span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
-        Menu
+      <button class="nav-toggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span>Menu</span>
+        <i aria-hidden="true"></i>
       </button>
-      <nav class="site-nav" id="site-nav" data-nav>
-        <a href="#top">Top</a>
-        <a href="#capabilities">できること</a>
-        <a href="#latest-works">制作事例</a>
+      <nav class="site-nav" id="site-nav" data-nav aria-label="メインナビゲーション">
+        <a href="#latest-works">事例</a>
+        <a href="services/">できること</a>
         <a href="plans/">料金</a>
         <a href="flow/">流れ</a>
-        <a href="#contact">Contact</a>
+        <a href="dx-ai/">DX・AI</a>
+        <a class="nav-contact" href="#contact">相談する</a>
       </nav>
     </header>
 
-    <main id="top" class="home-stage">
-      <section class="aw-hero" aria-labelledby="hero-title" data-hero-stage>
-        <div class="aw-hero-visual-field" data-hero-visual aria-hidden="true">
-          <figure class="aw-hero-art aw-hero-art-day">
-            <img src="assets/sc-hero-day.jpg" alt="" fetchpriority="high" decoding="async">
-          </figure>
-          <figure class="aw-hero-art aw-hero-art-night">
-            <img src="assets/sc-hero-night.jpg" alt="" decoding="async">
-          </figure>
-        </div>
-        <div class="section-inner aw-hero-post-cta" aria-label="最初の行動導線">
-          <a class="button primary" href="#contact">相談してみる</a>
-          <a class="button secondary" href="plans/">制作プランを見る</a>
-          <a class="button secondary" href="#latest-works">制作事例を見る</a>
-        </div>
+    <main id="main-content" class="home-stage">
+      <section class="aw-hero" id="top" aria-labelledby="hero-title" data-hero-stage>
         <div class="aw-hero-gridline" aria-hidden="true"></div>
-        <div class="section-inner aw-hero-inner" id="hero-entry">
+        <div class="aw-hero-visual-field" data-hero-visual aria-hidden="true">
+          <canvas class="aw-signal-canvas" data-signal-canvas></canvas>
+          <span class="aw-hero-glow aw-hero-glow-one"></span>
+          <span class="aw-hero-glow aw-hero-glow-two"></span>
+        </div>
+
+        <div class="section-inner aw-hero-inner">
           <div class="aw-hero-copy" data-reveal>
-            <p class="eyebrow">AI × DX × Web</p>
-            <h1 id="hero-title"><span>想いを、理想へ。</span><span>理想を、未来へ。</span></h1>
-            <p class="hero-lead">
-              ホームページ制作、AI導入、DXまで。
-              作るだけではなく、事業が成長し続ける仕組みを設計します。
-            </p>
-            <p class="hero-lead">
-              「何から始めればいいかわからない。」
-              そんな段階でも大丈夫。
-              あなたの想いや課題を整理し、一歩ずつ理想の形へ導きます。
-            </p>
+            <p class="eyebrow"><span>AI</span><span>DX</span><span>Web</span></p>
+            <h1 id="hero-title">
+              <span>想いを、理想へ。</span>
+              <span>理想を、未来へ。</span>
+            </h1>
+            <div class="hero-lead">
+              <p>ホームページ制作、AI導入、DXまで。作るだけではなく、事業が成長し続ける仕組みを設計します。</p>
+              <p>「何から始めればいいかわからない。」そんな段階から、想いや課題を整理し、一歩ずつ形にします。</p>
+            </div>
             <div class="hero-actions" aria-label="主な導線">
-              <a class="button primary" href="#contact">相談してみる</a>
-              <a class="button secondary" href="plans/">制作プランを見る</a>
+              <a class="button primary" href="#contact">まず相談してみる</a>
               <a class="button secondary" href="#latest-works">制作事例を見る</a>
+            </div>
+            <div class="aw-hero-scope" aria-label="対応領域">
+              <span>Homepage</span>
+              <span>Automation</span>
+              <span>Operation</span>
             </div>
           </div>
 
-          <aside class="aw-hero-panel" data-reveal data-depth="0.12" aria-label="AmorWorksの入口">
-            <div class="aw-hero-panel-head">
-              <span>Start From Here</span>
+          <div class="aw-hero-artboard" data-reveal data-depth="0.08">
+            <div class="aw-hero-art-frame">
+              <figure class="aw-hero-art aw-hero-art-day">
+                <img src="assets/sc-hero-day.webp" alt="" fetchpriority="high" decoding="async" width="1280" height="853">
+              </figure>
+              <figure class="aw-hero-art aw-hero-art-night">
+                <img src="assets/sc-hero-night.webp" alt="" decoding="async" width="1280" height="853">
+              </figure>
+              <div class="aw-hero-art-overlay" aria-hidden="true"></div>
             </div>
-            <strong>作る前に、まず整理します。</strong>
-            <p>何を載せるか、誰に伝えるか、問い合わせ後にどう動くか。制作前の迷いを一緒にほどきます。</p>
-            <p>ホームページだけで終わらず、必要になったタイミングでAI・DXや業務改善まで広げられます。</p>
-            <div class="aw-hero-mini-stats" aria-label="入口の整理">
-              <div><strong>ホームページ制作</strong><small>想いやサービスを、見やすく信頼される形に整えます。</small></div>
-              <div><strong>DX・業務効率化</strong><small>紙・LINE・Excel・手作業で散らばる情報を、使いやすい仕組みに変えます。</small></div>
-              <div><strong>AI活用</strong><small>文章作成、問い合わせ整理、業務補助など、日々の作業を軽くする使い方を一緒に設計します。</small></div>
+            <div class="aw-hero-panel">
+              <div class="aw-hero-panel-head">
+                <span>Start from here</span>
+                <span>01 — 03</span>
+              </div>
+              <strong>作る前に、まず整理します。</strong>
+              <p>誰に、何を伝え、問い合わせ後にどう動くか。制作前の迷いから一緒にほどきます。</p>
             </div>
-          </aside>
+          </div>
         </div>
 
         <div class="section-inner aw-capability-dock" id="capabilities" aria-label="AmorWorksで相談できること">
-          <a href="services/" data-reveal data-depth="0.05">
+          <a href="services/" data-reveal>
             <span>01 / Web</span>
             <strong>伝わる入口を作る</strong>
-            <small>新規制作、リニューアル、文章整理、問い合わせ導線まで整えます。</small>
+            <small>新規制作、リニューアル、文章整理、問い合わせ導線まで。</small>
           </a>
-          <a href="dx-ai/" data-reveal data-depth="0.09">
-            <span>02 / DX</span>
+          <a href="dx-ai/" data-reveal>
+            <span>02 / DX &amp; AI</span>
             <strong>業務を軽くする</strong>
-            <small>紙・LINE・Excelに散らばった情報を、使いやすい流れにします。</small>
+            <small>散らばる情報を整理し、必要なところからAI・自動化へ。</small>
           </a>
-          <a href="dx-ai/" data-reveal data-depth="0.13">
-            <span>03 / AI</span>
-            <strong>AIを身近に使う</strong>
-            <small>文章作成、問い合わせ整理、業務補助を、現場で使える形にします。</small>
-          </a>
-          <a href="#contact" data-reveal data-depth="0.17">
-            <span>04 / Consult</span>
+          <a href="#contact" data-reveal>
+            <span>03 / Consult</span>
             <strong>まず話して整理する</strong>
-            <small>まだまとまっていない段階から、必要な形を一緒に見つけます。</small>
+            <small>まだまとまっていない段階から、必要な形を一緒に探します。</small>
           </a>
         </div>
 
-        <a class="aw-scroll-cue" href="#latest-works" aria-label="次のセクションへ">
-          <span>Scroll</span>
+        <a class="aw-scroll-cue" href="#latest-works" aria-label="制作事例へ進む">
+          <span>Explore</span>
           <i aria-hidden="true"></i>
         </a>
       </section>
@@ -126,18 +128,19 @@
         <div class="section-inner">
           <div class="aw-split-heading" data-reveal>
             <div>
-              <p class="eyebrow">Homepage Build Cases</p>
-              <h2 id="latest-works-title">事業の形が伝わる制作事例</h2>
+              <p class="eyebrow">Selected Works</p>
+              <h2 id="latest-works-title">事業の形が伝わる<br>制作事例</h2>
             </div>
-            <p>
-              見た目だけではなく、どんな用途で、何を伝え、どんな相談や行動につなげるために作ったかを見られる事例です。
-            </p>
+            <p>見た目だけではなく、どんな用途で、何を伝え、どんな相談や行動につなげるために作ったかを確認できます。</p>
           </div>
 
           <div class="work-grid aw-case-grid" aria-label="最新のビルド事例">
-            <article class="work-card latest-work-card" data-reveal data-depth="0.07">
+            <article class="work-card latest-work-card" data-reveal data-depth="0.035">
               <div class="work-card-content">
-                <img src="assets/case-amoralice.jpg" alt="Amor Aliceの世界観を表現したホームページビジュアル">
+                <figure>
+                  <span class="case-number">01</span>
+                  <img src="assets/case-amoralice.webp" alt="Amor Aliceの世界観を表現したホームページビジュアル" loading="lazy" decoding="async" width="1536" height="1024">
+                </figure>
                 <div class="work-body">
                   <div class="work-meta"><span>Brand</span><span>Reservation</span><span>Worldview</span></div>
                   <h3>Amor Alice</h3>
@@ -145,18 +148,19 @@
                   <dl class="case-proof-list">
                     <div><dt>課題</dt><dd>世界観・安心感・募集状況が伝わりにくい</dd></div>
                     <div><dt>制作</dt><dd>ブランドサイト、子猫情報、LINE相談導線</dd></div>
-                    <div><dt>改善</dt><dd>見学前の不安を減らし、相談しやすい入口を整備</dd></div>
+                    <div><dt>整えた点</dt><dd>見学前の不安を減らし、相談しやすい入口を整備</dd></div>
                   </dl>
+                  <a class="text-button latest-direct-link" href="https://catteryamoralice-ragdoll.github.io/" target="_blank" rel="noopener">公開サイトを見る</a>
                 </div>
-              </div>
-              <div class="latest-direct-link-wrap">
-                <a class="text-button latest-direct-link" href="https://catteryamoralice-ragdoll.github.io/" target="_blank" rel="noopener">公開サイトを見る</a>
               </div>
             </article>
 
-            <article class="work-card latest-work-card" data-reveal data-depth="0.11">
+            <article class="work-card latest-work-card" data-reveal data-depth="0.045">
               <div class="work-card-content">
-                <img src="assets/case-shibata-current.png" alt="柴田商事のトラックが並ぶホームページビジュアル">
+                <figure>
+                  <span class="case-number">02</span>
+                  <img src="assets/case-shibata-public.webp" alt="柴田商事のトラックが並ぶホームページビジュアル（車両番号は非表示）" loading="lazy" decoding="async" width="1672" height="941">
+                </figure>
                 <div class="work-body">
                   <div class="work-meta"><span>Logistics</span><span>Company</span><span>Recruit</span></div>
                   <h3>柴田商事</h3>
@@ -164,18 +168,19 @@
                   <dl class="case-proof-list">
                     <div><dt>課題</dt><dd>現場情報・配送先・教育ノウハウが属人化</dd></div>
                     <div><dt>制作</dt><dd>配送DB、納品マップ、業務管理構想</dd></div>
-                    <div><dt>改善</dt><dd>新人教育と日々の判断を標準化しやすい形へ</dd></div>
+                    <div><dt>整えた点</dt><dd>新人教育と日々の判断を標準化しやすい形へ</dd></div>
                   </dl>
+                  <a class="text-button latest-direct-link" href="https://shibatashoji-logistics.github.io/" target="_blank" rel="noopener">公開サイトを見る</a>
                 </div>
-              </div>
-              <div class="latest-direct-link-wrap">
-                <a class="text-button latest-direct-link" href="https://shibatashoji-logistics.github.io/" target="_blank" rel="noopener">公開サイトを見る</a>
               </div>
             </article>
 
-            <article class="work-card latest-work-card" data-reveal data-depth="0.15">
+            <article class="work-card latest-work-card" data-reveal data-depth="0.055">
               <div class="work-card-content">
-                <img src="assets/case-stg.png" alt="株式会社STGのホームページビジュアル">
+                <figure>
+                  <span class="case-number">03</span>
+                  <img src="assets/case-stg.webp" alt="株式会社STGのホームページビジュアル" loading="lazy" decoding="async" width="1717" height="916">
+                </figure>
                 <div class="work-body">
                   <div class="work-meta"><span>Company</span><span>Recruit</span><span>Trust</span></div>
                   <h3>SAWADA TOMU GROUP</h3>
@@ -183,18 +188,16 @@
                   <dl class="case-proof-list">
                     <div><dt>課題</dt><dd>初見で事業内容と信頼感が伝わりにくい</dd></div>
                     <div><dt>制作</dt><dd>企業サイト構成、施工実績、求人導線</dd></div>
-                    <div><dt>改善</dt><dd>問い合わせ・採用につながる情報設計へ</dd></div>
+                    <div><dt>整えた点</dt><dd>問い合わせ・採用につながる情報設計へ</dd></div>
                   </dl>
+                  <a class="text-button latest-direct-link" href="https://amorworks.github.io/sawada-tomu-group-site/" target="_blank" rel="noopener">公開サイトを見る</a>
                 </div>
-              </div>
-              <div class="latest-direct-link-wrap">
-                <a class="text-button latest-direct-link" href="https://amorworks.github.io/sawada-tomu-group-site/" target="_blank" rel="noopener">公開サイトを見る</a>
               </div>
             </article>
           </div>
 
           <div class="section-more" data-reveal>
-            <a class="button primary" href="works/">事例集をもっと見る</a>
+            <a class="button secondary" href="works/">事例集をもっと見る</a>
           </div>
         </div>
       </section>
@@ -203,38 +206,36 @@
         <div class="section-inner">
           <div class="aw-split-heading" data-reveal>
             <div>
-              <p class="eyebrow">Homepage Production Links</p>
-              <h2 id="gateway-title"><span>ホームページは、</span><span>作る前の整理がいちばん大切。</span></h2>
+              <p class="eyebrow">Before Building</p>
+              <h2 id="gateway-title">ホームページは、<br>作る前の整理が<br>いちばん大切。</h2>
             </div>
-            <p>
-              「何を載せる？」<br>
-              「誰に届ける？」<br>
-              「何を目的にする？」<br><br>
-              作り始める前に整理することで、<br>
-              成果につながるホームページになります。
-            </p>
+            <p>「何を載せる？」「誰に届ける？」「何を目的にする？」を先に整理することで、制作後も使い続けられるホームページになります。</p>
           </div>
 
           <div class="gateway-grid aw-gateway-grid aw-homepage-links-grid" aria-label="ホームページ制作の詳細ページ一覧">
             <a class="gateway-card" href="services/" data-reveal>
-              <span>Services</span>
+              <span>01 / Services</span>
               <h3>できること</h3>
-              <p>Web制作、DX、AI活用、運用サポートまで相談できる範囲を確認できます。</p>
+              <p>Web制作、DX、AI活用、運用サポートまで、相談できる範囲を確認できます。</p>
+              <i aria-hidden="true">↗</i>
             </a>
             <a class="gateway-card" href="plans/" data-reveal>
-              <span>Plans</span>
+              <span>02 / Plans</span>
               <h3>プラン</h3>
               <p>今の事業段階や予算に合わせて、無理のない始め方を確認できます。</p>
+              <i aria-hidden="true">↗</i>
             </a>
             <a class="gateway-card" href="flow/" data-reveal>
-              <span>Process</span>
+              <span>03 / Process</span>
               <h3>制作の流れ</h3>
-              <p>相談、構成、制作、確認、公開までの順番を先に見て安心できます。</p>
+              <p>相談、構成、制作、確認、公開までの順番を先に確認できます。</p>
+              <i aria-hidden="true">↗</i>
             </a>
             <a class="gateway-card" href="philosophy/" data-reveal>
-              <span>Philosophy</span>
+              <span>04 / Philosophy</span>
               <h3>理念・考え方</h3>
-              <p>やさしく実用的に、事業とともに育てる考え方を整理しています。</p>
+              <p>事業とともに育てるための、AmorWorksの制作判断を整理しています。</p>
+              <i aria-hidden="true">↗</i>
             </a>
           </div>
         </div>
@@ -245,26 +246,28 @@
           <div class="aw-split-heading" data-reveal>
             <div>
               <p class="eyebrow">FAQ</p>
-              <h2 id="faq-title">よくある相談</h2>
+              <h2 id="faq-title">まだ曖昧でも、<br>相談できます。</h2>
             </div>
-            <p>
-              最初から正しく説明できなくても大丈夫です。小さな違和感や「こうできたらいいな」から、必要な形を一緒に整理します。
-            </p>
+            <p>最初から正しく説明できなくても大丈夫です。小さな違和感や「こうできたらいいな」から、必要な形を一緒に整理します。</p>
           </div>
           <div class="aw-faq-grid" aria-label="よくある質問">
             <article data-reveal>
+              <span>01</span>
               <h3>内容がまとまっていなくても相談できますか？</h3>
               <p>できます。今困っていること、作りたい雰囲気、参考サイトなど、分かる範囲から整理します。</p>
             </article>
             <article data-reveal>
+              <span>02</span>
               <h3>AIやDXだけの相談もできますか？</h3>
               <p>できます。文章作成、問い合わせ整理、Excel作業の見直しなど、日々の作業に近いところから始められます。</p>
             </article>
             <article data-reveal>
+              <span>03</span>
               <h3>小さなホームページから始められますか？</h3>
               <p>始められます。必要なページだけで公開し、事業の成長に合わせて更新やDX導線を足していけます。</p>
             </article>
             <article data-reveal>
+              <span>04</span>
               <h3>公開後の更新や改善も相談できますか？</h3>
               <p>はい。文章修正、画像差し替え、問い合わせ導線の改善、業務アプリ化の相談まで続けて対応できます。</p>
             </article>
@@ -274,9 +277,12 @@
 
       <section class="section aw-trust-section" id="operator" aria-labelledby="operator-title">
         <div class="section-inner aw-trust-grid aw-trust-grid-single">
-          <article class="aw-trust-panel aw-owner-panel" data-reveal data-depth="0.1">
-            <p class="eyebrow">Operator</p>
-            <h2 id="operator-title">代表・運営情報</h2>
+          <article class="aw-trust-panel aw-owner-panel" data-reveal>
+            <div class="aw-owner-intro">
+              <p class="eyebrow">Operator</p>
+              <h2 id="operator-title">つくる人と、<br>運営の背景。</h2>
+              <p class="owner-note">自分の事業で実際に使いながら、伝わる入口と回る仕組みを整えています。</p>
+            </div>
             <dl class="aw-owner-list">
               <div><dt>名称</dt><dd>AmorWorks</dd></div>
               <div><dt>代表</dt><dd>柴田 竜弥</dd></div>
@@ -284,7 +290,6 @@
               <div><dt>対応エリア</dt><dd>全国オンライン対応 / 千葉県周辺は対面相談可</dd></div>
               <div><dt>運営背景</dt><dd>Amor Alice / 柴田商事の実務改善経験をもとに制作</dd></div>
             </dl>
-            <p class="owner-note">自分の事業で実際に使いながら、伝わる入口と回る仕組みを整えています。</p>
           </article>
         </div>
       </section>
@@ -293,11 +298,8 @@
         <div class="section-inner">
           <div class="section-heading contact-heading" data-reveal>
             <p class="eyebrow">Contact / Start Here</p>
-            <h2 id="contact-title">HP制作からDXまで、ここでまとめて相談できます。</h2>
-            <p>
-              まだ内容がまとまっていなくても大丈夫です。
-              「こんなことできる？」という段階から、必要な形を一緒に整理します。
-            </p>
+            <h2 id="contact-title"><span>HP制作からDXまで、</span><br><span>ここでまとめて</span><br><span>相談できます。</span></h2>
+            <p>まだ内容がまとまっていなくても大丈夫です。「こんなことできる？」という段階から、必要な形を一緒に整理します。</p>
           </div>
 
           <div class="contact-grid">
@@ -305,15 +307,17 @@
               class="application-form"
               data-application-form
               data-form-endpoint="https://formsubmit.co/ajax/cattery227.amor.alice@gmail.com"
+              action="https://formsubmit.co/cattery227.amor.alice@gmail.com"
+              method="post"
             >
-              <input type="hidden" name="_subject" value="AmorWorksショーケースから依頼相談">
+              <input type="hidden" name="_subject" value="AmorWorks公式サイトから依頼相談">
               <input type="hidden" name="_template" value="table">
               <input type="hidden" name="_captcha" value="false">
               <input class="honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
               <div class="form-head">
                 <p class="eyebrow">Request Form</p>
                 <h3>今、困っていることを聞かせてください</h3>
-                <p>必要事項だけでなく、まだ整理できていない困りごとも送れます。内容を見て、最初に確認すべきことから返信します。</p>
+                <p>まだ整理できていない困りごとも送れます。内容を見て、最初に確認すべきことから返信します。</p>
                 <div class="form-assurance" aria-label="送信前の確認">
                   <span>分かる範囲でOK</span>
                   <span>内容を整理して返信</span>
@@ -388,35 +392,37 @@
                 <input type="url" name="reference" placeholder="https://">
               </label>
 
+              <p class="form-privacy">入力内容は外部フォームサービス（FormSubmit）を経由して、AmorWorksへ送信されます。</p>
+              <label class="form-consent">
+                <input type="checkbox" name="external-service-confirmation" value="確認済み" required>
+                <span>上記の外部サービス経由での送信を確認しました（必須）</span>
+              </label>
+
               <div class="form-actions">
                 <button class="button contact-copy-button" type="submit">まず相談してみる</button>
-                <p class="copy-status" data-application-status aria-live="polite">
-                  送信内容は相談対応のために確認します。
-                </p>
+                <p class="copy-status" data-application-status aria-live="polite">送信内容は相談対応のために確認します。</p>
                 <textarea class="application-output" data-application-output aria-label="入力内容の控え" readonly hidden></textarea>
               </div>
             </form>
 
-            <div class="contact-directory" aria-labelledby="contact-directory-title">
+            <div class="contact-directory" aria-labelledby="contact-directory-title" data-reveal>
+              <p class="eyebrow">After Submit</p>
               <h3 id="contact-directory-title">送信後の流れ</h3>
               <div class="contact-methods contact-steps">
                 <article>
                   <span>Step 01</span>
                   <h4>相談内容を送る</h4>
                   <p>ホームページ、DX・AI、Webアプリ、運用サポートなど、分かる範囲の言葉で送れます。</p>
-                  <strong>受付中</strong>
                 </article>
                 <article>
                   <span>Step 02</span>
                   <h4>内容を整理する</h4>
                   <p>目的、予算、今の困りごとを見て、制作・改善の入口を整理します。</p>
-                  <strong>整理</strong>
                 </article>
                 <article>
                   <span>Step 03</span>
                   <h4>次の進め方を返信</h4>
                   <p>最初に確認したいこと、合いそうな制作範囲、進め方の候補を返します。</p>
-                  <strong>返信</strong>
                 </article>
               </div>
               <div class="form-note">
@@ -431,10 +437,21 @@
 
     <footer class="site-footer">
       <div class="section-inner footer-inner">
-        <p>AmorWorks Showcase</p>
-        <p>&copy; <span data-year>2026</span> AmorWorks. Create with heart. Grow together.</p>
+        <div>
+          <p class="footer-brand">AmorWorks</p>
+          <p>想いを、理想へ。理想を、未来へ。</p>
+        </div>
+        <nav aria-label="フッターナビゲーション">
+          <a href="works/">事例</a>
+          <a href="services/">できること</a>
+          <a href="plans/">料金</a>
+          <a href="flow/">流れ</a>
+        </nav>
+        <p>&copy; <span data-year>2026</span> AmorWorks.</p>
       </div>
     </footer>
+
+    <a class="aw-mobile-cta" href="#contact">相談する</a>
 
     <script src="visuals.js"></script>
     <script src="script.js"></script>

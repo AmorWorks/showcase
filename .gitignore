@@ -3,3 +3,10 @@ Thumbs.db
 *.log
 .vscode/
 preview-server.local.md
+
+# GitHub Pagesの公開ツリーへ、今後の入稿原本を追加しない
+00-資料/
+
+# ナンバー未加工の車両写真はローカル原本として保持し、公開しない
+assets/case-shibata.png
+assets/case-shibata-current.png
