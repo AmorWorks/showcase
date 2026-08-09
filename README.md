@@ -16,13 +16,13 @@ AmorWorksとして制作したホームページ、問い合わせ導線、予�
 
 ### 確認待ち
 
-- FormSubmitの初回確認メール承認と、実際の受信・返信経路
+- 新受付先 `amorworks@amoralice.com` に対するFormSubmitの初回確認メール承認と、実際の受信・返信経路
 - 公開中の5つのHP料金、DX・AI参考価格、Premium割引は2026-08-09時点で暫定公開承認済み。正式な正本・税区分・適用条件は継続確認
 - 事例画像の権利・公開許可と、代表情報・対応エリアの公開承認
 
 ### 運用前に確認すること
 
-1. FormSubmitの初回確認メールを承認し、実際の受信・返信経路を確認する
+1. 新受付先 `amorworks@amoralice.com` に届くFormSubmitの初回確認メールを承認し、実際の受信・返信経路を確認する
 2. 料金の正式な正本・税区分、Premium適用条件、代表情報、対応エリアを確認する
 3. 事例画像の権利・公開許可を最終確認する
 
@@ -36,7 +36,7 @@ AmorWorksとして制作したホームページ、問い合わせ導線、予�
 - DX・AI支援4段階の参考価格とPremium 20%OFF条件を料金ページに暫定掲載済み
 - DX・AI支援と相談から公開・運用までの流れは「できること」ページに統合
 - 公式LINEは準備中
-- フォームは `cattery227.amor.alice@gmail.com` 宛ての設定だが、送信先の妥当性・FormSubmitの承認・実受信は未確認
+- フォームは `amorworks@amoralice.com` 宛てに更新済み。Cloudflare Email Routingで有効化され、従来のGmailへ転送されることは確認済みだが、FormSubmitの新宛先承認・フォーム経由の実受信・返信経路は未確認
 
 ## 構成
 
@@ -104,14 +104,14 @@ AmorWorksとして制作したホームページ、問い合わせ導線、予�
 ## 公開後に整えること
 
 - 公式LINEのURLを接続する
-- FormSubmitの初回確認メールを承認する
+- 新受付先 `amorworks@amoralice.com` に届くFormSubmitの初回確認メールを承認する
 - 追加掲載する事例を決める
 - 料金表の公開表現を最終確認する
 - SNSプロフィールからこのページへ導線を作る
 
 ## 問い合わせ先を接続するとき
 
-現在のContact欄は、公式LINEを準備中表示にし、お申し込みフォームはFormSubmit経由で `cattery227.amor.alice@gmail.com` に送る設定です。ただし、この宛先がAmorWorksの正式な受付先か、FormSubmitが有効化済みか、実際に受信・返信できるかは未確認です。
+現在のContact欄は、公式LINEを準備中表示にし、お申し込みフォームはFormSubmit経由で `amorworks@amoralice.com` に送る設定です。このアドレスはCloudflare Email Routingで有効化され、従来のGmailへ転送されることを確認済みです。FormSubmit側の新宛先承認と、フォーム経由の実受信・返信経路は未確認です。
 GitHub Pagesだけではメール送信処理ができないため、外部フォーム受け口を使っています。
 
 候補:
