@@ -3,7 +3,7 @@
 AmorWorksとして制作したホームページ、問い合わせ導線、予約導線、運用サポートのビルド事例を紹介する静的サイトです。
 今後このサイトは `SC` と呼びます。SCはショーケースの略で、案件受注営業用のホームページです。
 
-公開URL: https://amorworks.github.io/showcase/
+公開URL: https://amorworks.amoralice.com/
 
 ## 2026-08-09 再設計版
 
@@ -22,21 +22,21 @@ AmorWorksとして制作したホームページ、問い合わせ導線、予�
 
 ### 運用前に確認すること
 
-1. 公開フォームを別アドレスから送信し、実受信と返信先（Reply-To）を確認する
+1. 公開フォームの返信先（Reply-To）を確認する
 2. 料金の正式な正本・税区分、Premium適用条件、代表情報、対応エリアを確認する
 3. 事例画像の権利・公開許可を最終確認する
 
 ## 公開構成
 
-- GitHub Pagesで公開済み
-- 独自ドメインなし
+- Cloudflare PagesへDirect Uploadで公開
+- 本番ドメインは `https://amorworks.amoralice.com/`。`amoralice.com` 本体は変更しない
 - 事例3件の公開リンク接続済み
 - TOPは軽量2Dシグナル、昼夜の水彩変化、スクロール演出、最新事例3件、下層ページ導線、問い合わせフォームで構成
 - ホームページ制作5プラン、プラン画像、比較表、各プラン詳細を料金ページに掲載済み
 - DX・AI支援4段階の参考価格とPremium 20%OFF条件を料金ページに暫定掲載済み
 - DX・AI支援と相談から公開・運用までの流れは「できること」ページに統合
 - 公式LINEは準備中
-- フォームは `amorworks@amoralice.com` 宛てに更新済み。Cloudflare Email RoutingとFormSubmitの初回承認は有効化済みで、公開前POSTも受理された。公開フォームからの実受信・返信経路は最終確認待ち
+- フォームは `amorworks@amoralice.com` 宛てに更新済み。Cloudflare Email RoutingとFormSubmitの初回承認は有効化済みで、公開フォームからの実受信も確認済み。返信経路（Reply-To）は最終確認待ち
 
 ## 構成
 
@@ -90,7 +90,7 @@ AmorWorksとして制作したホームページ、問い合わせ導線、予�
 3. 空リンク、誤字、画像切れがないか確認する
 4. `git status` で変更ファイルを確認する
 5. 意図したファイルだけを `git add` し、差分を再確認してからcommit・pushする
-6. GitHub Pagesの公開URLで反映を確認する
+6. Cloudflare Pagesの本番URLで反映を確認する
 
 ## 公開・更新チェック
 
@@ -111,8 +111,8 @@ AmorWorksとして制作したホームページ、問い合わせ導線、予�
 
 ## 問い合わせ先を接続するとき
 
-現在のContact欄は、公式LINEを準備中表示にし、お申し込みフォームはFormSubmit経由で `amorworks@amoralice.com` に送る設定です。このアドレスはCloudflare Email Routingで有効化され、従来のGmailへ転送されます。FormSubmitの初回承認と公開前POSTの受理は確認済みです。公開フォームからの実受信と返信先（Reply-To）は最終確認待ちです。
-GitHub Pagesだけではメール送信処理ができないため、外部フォーム受け口を使っています。
+現在のContact欄は、公式LINEを準備中表示にし、お申し込みフォームはFormSubmit経由で `amorworks@amoralice.com` に送る設定です。このアドレスはCloudflare Email Routingで有効化され、従来のGmailへ転送されます。FormSubmitの初回承認と公開フォームからの実受信は確認済みです。返信先（Reply-To）は最終確認待ちです。
+静的サイトだけではメール送信処理ができないため、外部フォーム受け口を使っています。
 
 候補:
 
@@ -128,9 +128,9 @@ GitHub Pagesだけではメール送信処理ができないため、外部フ�
 フォーム送信先を変える場合は、`index.html` のフォームタグにある `data-form-endpoint` を変更します。
 GASで接続する場合は、`data-form-endpoint="GASのWebアプリURL"` に差し替えます。
 
-## GitHub Pages運用
+## 公開運用
 
-このリポジトリは `main` ブランチのリポジトリ直下 `/` から GitHub Pages で公開します。
-独自ドメインは使わず、GitHub Pagesの標準URLで運用します。
+本番はCloudflare Pagesの `amorworks-showcase` プロジェクトへDirect Uploadし、`https://amorworks.amoralice.com/` で公開します。
+GitHubは制作履歴とPC間同期の軸として使い、Cloudflareへの反映とは分けて管理します。
 
-反映に数十秒から数分かかることがあります。push直後に古い表示のままでも、少し待って再読み込みしてください。
+反映に数十秒から数分かかることがあります。公開直後に古い表示のままでも、少し待って再読み込みしてください。
