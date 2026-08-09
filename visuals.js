@@ -1,40 +1,25 @@
 (() => {
   const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const isReduced = motionQuery.matches;
+  const finePointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+  let isReduced = motionQuery.matches;
+  let manualPaused = false;
+  try {
+    manualPaused = window.sessionStorage.getItem("aw-motion-paused") === "true";
+  } catch {
+    // Fall back to the current page when storage is unavailable.
+  }
   const heroStage = document.querySelector("[data-hero-stage]");
   const heroVisual = document.querySelector("[data-hero-visual]");
-  const progressBar = document.querySelector("[data-site-progress]");
-  const revealTargets = document.querySelectorAll("[data-reveal]");
   const depthTargets = document.querySelectorAll("[data-depth]");
   let scrollFrame = 0;
 
   const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
   const smooth = (value) => value * value * (3 - 2 * value);
-
-  if (revealTargets.length && "IntersectionObserver" in window && !isReduced) {
-    document.body.classList.add("has-reveal");
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-          revealObserver.unobserve(entry.target);
-        });
-      },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.1 },
-    );
-    revealTargets.forEach((target) => revealObserver.observe(target));
-  }
+  const motionPaused = () => isReduced || manualPaused;
 
   const syncScrollEffects = () => {
     scrollFrame = 0;
-    const pageTravel = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
-    const pageProgress = clamp(window.scrollY / pageTravel);
-    if (progressBar) {
-      progressBar.style.setProperty("--page-progress", pageProgress.toFixed(4));
-    }
-
-    if (isReduced) return;
+    if (motionPaused()) return;
 
     const desktop = window.innerWidth > 820;
     if (desktop) {
@@ -82,6 +67,9 @@
   let animationFrame = 0;
   let heroIsVisible = true;
   let pointerActive = false;
+  let pointerFrame = 0;
+  let pointerClientX = 0;
+  let pointerClientY = 0;
   let pointerX = 0;
   let pointerY = 0;
   let nodes = [];
@@ -92,7 +80,7 @@
   };
 
   const createNodes = () => {
-    const count = width < 680 ? 20 : Math.min(46, Math.max(30, Math.round(width / 34)));
+    const count = width < 680 ? 9 : 14;
     nodes = Array.from({ length: count }, (_, index) => ({
       x: seeded(index + 1) * width,
       y: seeded(index + 51) * height,
@@ -115,7 +103,12 @@
     canvas.style.height = `${height}px`;
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
     createNodes();
-    if (isReduced || width < 560) drawSignals(0, true);
+    if (motionPaused() || width < 560) {
+      stopSignals();
+      drawSignals(0, true);
+    } else {
+      startSignals();
+    }
   };
 
   const pointFor = (node, time, still) => {
@@ -127,8 +120,8 @@
       const dx = pointerX - x;
       const dy = pointerY - y;
       const distance = Math.hypot(dx, dy);
-      if (distance < 240 && distance > 0) {
-        const force = (1 - distance / 240) * 20;
+      if (distance < 200 && distance > 0) {
+        const force = (1 - distance / 200) * 14;
         x += (dx / distance) * force;
         y += (dy / distance) * force;
       }
@@ -139,7 +132,7 @@
   function drawSignals(time, still = false) {
     context.clearRect(0, 0, width, height);
     const points = nodes.map((node) => pointFor(node, time, still));
-    const connectionDistance = width < 680 ? 132 : 178;
+    const connectionDistance = width < 680 ? 170 : 300;
 
     for (let first = 0; first < points.length; first += 1) {
       for (let second = first + 1; second < points.length; second += 1) {
@@ -176,13 +169,13 @@
 
   const animateSignals = (time) => {
     animationFrame = 0;
-    if (!heroIsVisible || document.hidden || isReduced || width < 560) return;
+    if (!heroIsVisible || document.hidden || motionPaused() || width < 560) return;
     drawSignals(time);
     animationFrame = window.requestAnimationFrame(animateSignals);
   };
 
   const startSignals = () => {
-    if (animationFrame || isReduced || width < 560 || !heroIsVisible || document.hidden) return;
+    if (animationFrame || motionPaused() || width < 560 || !heroIsVisible || document.hidden) return;
     animationFrame = window.requestAnimationFrame(animateSignals);
   };
 
@@ -192,16 +185,64 @@
     animationFrame = 0;
   };
 
-  heroStage.addEventListener("pointermove", (event) => {
+  const flushHeroPointer = () => {
+    pointerFrame = 0;
+    if (motionPaused() || !pointerActive) return;
     const bounds = heroStage.getBoundingClientRect();
-    pointerX = event.clientX - bounds.left;
-    pointerY = event.clientY - bounds.top;
+    pointerX = pointerClientX - bounds.left;
+    pointerY = pointerClientY - bounds.top;
+  };
+
+  heroStage.addEventListener("pointermove", (event) => {
+    if (motionPaused() || !finePointerQuery.matches || event.pointerType === "touch") return;
+    pointerClientX = event.clientX;
+    pointerClientY = event.clientY;
     pointerActive = true;
+    if (!pointerFrame) pointerFrame = window.requestAnimationFrame(flushHeroPointer);
   }, { passive: true });
 
   heroStage.addEventListener("pointerleave", () => {
+    if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
+    pointerFrame = 0;
     pointerActive = false;
   }, { passive: true });
+
+  const setStaticVisual = () => {
+    depthTargets.forEach((target) => target.style.setProperty("--parallax-y", "0px"));
+    heroStage.style.setProperty("--hero-night-opacity", "0.18");
+    heroStage.style.setProperty("--hero-pan-x", "0px");
+    heroStage.style.setProperty("--hero-pan-y", "0px");
+    heroStage.style.setProperty("--hero-scale", "1.02");
+    if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
+    pointerFrame = 0;
+    pointerActive = false;
+    stopSignals();
+    drawSignals(0, true);
+  };
+
+  const syncMotionPreference = (event) => {
+    isReduced = event.matches;
+    if (motionPaused()) setStaticVisual();
+    else {
+      syncScrollEffects();
+      startSignals();
+    }
+  };
+
+  if (typeof motionQuery.addEventListener === "function") {
+    motionQuery.addEventListener("change", syncMotionPreference);
+  } else {
+    motionQuery.addListener(syncMotionPreference);
+  }
+
+  document.addEventListener("aw:motion-toggle", (event) => {
+    manualPaused = Boolean(event.detail?.paused);
+    if (motionPaused()) setStaticVisual();
+    else {
+      syncScrollEffects();
+      startSignals();
+    }
+  });
 
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) stopSignals();

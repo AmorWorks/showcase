@@ -32,7 +32,8 @@ AmorWorksとして制作したホームページ、問い合わせ導線、予�
 - 独自ドメインなし
 - 事例3件の公開リンク接続済み
 - TOPは軽量2Dシグナル、昼夜の水彩変化、スクロール演出、最新事例3件、下層ページ導線、問い合わせフォームで構成
-- ホームページ制作5プラン、プラン画像、比較表、各プラン詳細、DX・AI成長ステップ、制作の流れは下層ページに掲載済み
+- ホームページ制作5プラン、プラン画像、比較表、各プラン詳細を料金ページに掲載済み
+- DX・AI支援と相談から公開・運用までの流れは「できること」ページに統合
 - 公式LINEは準備中
 - フォームは `cattery227.amor.alice@gmail.com` 宛ての設定だが、送信先の妥当性・FormSubmitの承認・実受信は未確認
 
@@ -41,10 +42,10 @@ AmorWorksとして制作したホームページ、問い合わせ導線、予�
 - `index.html`: Topページ。全依頼の入口として没入型ヒーロー、相談入口、最新事例、下層ページ導線、問い合わせ導線を掲載
 - `works/`: ビルド事例ページ
 - `philosophy/`: AmorWorksの理念・制作判断ページ
-- `services/`: ホームページ制作、DX・AI、Webアプリ、運用サポートの説明ページ
+- `services/`: ホームページ制作、DX・AI、Webアプリ、運用サポート、進め方をまとめた説明ページ
 - `plans/`: ホームページ制作5プランの料金ページ
-- `dx-ai/`: DX・AI支援ページ
-- `flow/`: 制作の流れページ
+- `dx-ai/`: 旧URL。`services/#dx-ai` への互換入口
+- `flow/`: 旧URL。`services/#process` への互換入口
 - `styles.css`: デザイン
 - `script.js`: モバイルメニュー、事例フィルター、年表示、フォーム内容コピー
 - `visuals.js`: TOPのCanvas 2Dシグナル、昼夜変化、スクロール連動、表示アニメーション
@@ -67,15 +68,15 @@ AmorWorksとして制作したホームページ、問い合わせ導線、予�
 - AmorWorksの理念・考え方を変える: `philosophy/index.html`
 - 制作できる内容を変える: `services/index.html`
 - 料金ページの下層版を変える: `plans/index.html`
-- DX・AI支援ページの下層版を変える: `dx-ai/index.html`
-- 制作の流れページを変える: `flow/index.html`
+- DX・AI支援の説明を変える: `services/index.html` の `#dx-ai`
+- 相談から公開・運用までの流れを変える: `services/index.html` の `#process`
 - 問い合わせフォームを変える: `index.html` の `aw-contact-section`
 - ホームページ制作プランや金額を変える: `plans/index.html`
 - 料金プランの正本を確認する: 旧README記載の `../00-共通/AmorWorks_料金プラン.md` は現在見つからないため、正本の場所を確定してから更新する
 - 料金プラン画像を差し替える: `assets/plan-*.jpg` を更新する。元画像は公開用リポジトリ外で管理する
-- DX・AIサービスの説明を変える: `dx-ai/index.html`
+- DX・AIサービスの説明を変える: `services/index.html` の `#dx-ai`
 - DX・AIサービスの正本を確認する: 旧README記載の `../00-共通/AmorWorks_DX・AIサービス.md` は現在見つからないため、正本の場所を確定してから更新する
-- 制作の流れを変える: `flow/index.html`
+- 制作の流れを変える: `services/index.html` の `#process`
 - 各種連絡先・お申し込みフォームを変える: `index.html` の `#contact` セクション
 - 色、余白、カードの見た目を変える: `styles.css`
 - ボタンやコピー機能の動きを変える: `script.js`
