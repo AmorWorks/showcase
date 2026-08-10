@@ -23,11 +23,127 @@
     <link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32">
     <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="stylesheet" href="styles.css?v=20260809-release-1">
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const navigationEntry = window.performance.getEntriesByType?.("navigation")?.[0];
+        const navigationType = navigationEntry?.type || "navigate";
+        const hashAllowsOpening = !window.location.hash;
+        const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const reducedMotion = reducedMotionQuery.matches;
+        let manuallyPaused = false;
+        let rememberedScrollY = 0;
+
+        try {
+          manuallyPaused = window.sessionStorage.getItem("aw-motion-paused") === "true";
+          rememberedScrollY = Number(window.sessionStorage.getItem("aw-home-scroll-y") || 0);
+        } catch {
+          // The completed page remains the fallback when storage is unavailable.
+        }
+
+        window.addEventListener("pagehide", () => {
+          try {
+            window.sessionStorage.setItem("aw-home-scroll-y", String(window.scrollY));
+          } catch {
+            // Browser scroll restoration remains authoritative.
+          }
+        }, { once: true });
+
+        const restoresPosition = navigationType === "back_forward"
+          || (navigationType === "reload" && rememberedScrollY >= 24);
+        if (!hashAllowsOpening || reducedMotion || manuallyPaused || restoresPosition) return;
+
+        const scrollKeys = new Set(["PageUp", "PageDown", "Home", "End", "ArrowUp", "ArrowDown", " "]);
+        const gateActive = () => root.classList.contains("aw-opening-pending");
+        const stopScroll = (event) => {
+          if (!gateActive() || event.ctrlKey) return;
+          if (event.type === "touchmove" && event.touches?.length > 1) return;
+          if (event.cancelable) event.preventDefault();
+        };
+        const stopScrollKeys = (event) => {
+          if (!gateActive()) return;
+          if (event.key === "Tab" || event.key === "Escape") {
+            window.__awFinishOpening?.(`keyboard-${event.key.toLowerCase()}`);
+            window.__awOpeningGate?.release(`keyboard-${event.key.toLowerCase()}`);
+            return;
+          }
+          const editable = event.target instanceof Element
+            && Boolean(event.target.closest("button, a, input, textarea, select, [contenteditable='true']"));
+          if (!editable && scrollKeys.has(event.key) && event.cancelable) event.preventDefault();
+        };
+        const releaseOnAction = (event) => {
+          if (!gateActive() || !(event.target instanceof Element)) return;
+          if (event.target.closest("[data-aw-opening-skip], .skip-link, a[href]")) {
+            if (typeof window.__awFinishOpening === "function") window.__awFinishOpening("explicit-action");
+            else release("explicit-action");
+          }
+        };
+        const releaseOnReducedMotion = (event) => {
+          if (event.matches) release("reduced-motion");
+        };
+        const release = (reason = "fallback") => {
+          if (!gateActive()) return;
+          window.clearTimeout(window.__awOpeningFallbackTimer);
+          root.classList.remove("aw-opening-pending", "aw-opening-running", "aw-opening-ui");
+          root.dataset.awOpeningState = "done";
+          root.dataset.awOpeningReason = reason;
+          window.removeEventListener("wheel", stopScroll, true);
+          window.removeEventListener("touchmove", stopScroll, true);
+          window.removeEventListener("keydown", stopScrollKeys, true);
+          window.removeEventListener("click", releaseOnAction, true);
+          if (typeof reducedMotionQuery.removeEventListener === "function") {
+            reducedMotionQuery.removeEventListener("change", releaseOnReducedMotion);
+          } else {
+            reducedMotionQuery.removeListener(releaseOnReducedMotion);
+          }
+        };
+
+        root.classList.add("aw-opening-pending");
+        root.dataset.awOpeningState = "pending";
+        window.addEventListener("wheel", stopScroll, { capture: true, passive: false });
+        window.addEventListener("touchmove", stopScroll, { capture: true, passive: false });
+        window.addEventListener("keydown", stopScrollKeys, true);
+        window.addEventListener("click", releaseOnAction, true);
+        if (typeof reducedMotionQuery.addEventListener === "function") {
+          reducedMotionQuery.addEventListener("change", releaseOnReducedMotion);
+        } else {
+          reducedMotionQuery.addListener(releaseOnReducedMotion);
+        }
+        window.addEventListener("pagehide", () => release("pagehide"), { once: true });
+        window.addEventListener("pageshow", (event) => {
+          if (event.persisted) release("bfcache");
+        });
+        window.__awOpeningGate = { release };
+        window.__awOpeningFallbackTimer = window.setTimeout(() => release("bootstrap-timeout"), 3400);
+      })();
+    </script>
+    <link rel="stylesheet" href="styles.css?v=20260810-logo-focus-6">
   </head>
   <body class="home-page">
     <a class="skip-link" href="#main-content">本文へ移動</a>
     <div class="site-progress" aria-hidden="true"><span data-site-progress></span></div>
+
+    <div class="aw-opening" data-aw-opening>
+      <div class="aw-opening-atmosphere" aria-hidden="true"></div>
+      <div class="aw-opening-picture" data-aw-opening-picture aria-hidden="true">
+        <img class="aw-opening-day" src="assets/sc-hero-day.webp" alt="" fetchpriority="high" decoding="async" width="1280" height="853" data-aw-opening-day>
+        <span class="aw-opening-material" data-aw-opening-material data-aw-material="vapor" aria-hidden="true">
+          <span class="aw-opening-material-letter aw-opening-material-a"></span>
+          <span class="aw-opening-material-letter aw-opening-material-w"></span>
+        </span>
+        <img class="aw-opening-material-source" src="assets/brand/amorworks/source/amorworks-wordmark-official-native.png" alt="" decoding="async" hidden data-aw-opening-material-source>
+        <img class="aw-opening-night" src="assets/sc-hero-night.webp" alt="" decoding="async" width="1280" height="853" data-aw-opening-night>
+        <span class="aw-opening-shade"></span>
+      </div>
+      <div class="aw-opening-brand" aria-hidden="true">
+        <span>AmorWorks</span>
+        <small>Same side. Small steps.</small>
+      </div>
+      <button class="aw-opening-skip" type="button" data-aw-opening-skip aria-label="演出をスキップしてサイトを表示する">
+        <span>サイトを見る</span>
+        <small>Skip</small>
+      </button>
+    </div>
 
     <header class="site-header" data-header>
       <a class="brand" href="#top" aria-label="AmorWorks トップへ">
@@ -60,7 +176,7 @@
         </div>
 
         <div class="section-inner aw-hero-inner">
-          <div class="aw-hero-copy" data-reveal>
+          <div class="aw-hero-copy">
             <p class="eyebrow"><span>同じ立場から始める</span><span>Web</span><span>DX</span><span>AI</span></p>
             <h1 class="aw-hero-purpose-title" id="hero-title">
               <span class="aw-hero-brandline">AmorWorksは</span>
@@ -85,24 +201,31 @@
             </div>
           </div>
 
-          <div class="aw-hero-artboard" data-reveal data-depth="0.08">
+          <div class="aw-hero-artboard">
             <div class="aw-hero-art-frame">
               <figure class="aw-hero-art aw-hero-art-day">
-                <img src="assets/sc-hero-day.webp" alt="" fetchpriority="high" decoding="async" width="1280" height="853">
+                <img src="assets/sc-hero-day.webp" alt="水彩で描かれたAmorWorksのブランドビジュアル" fetchpriority="high" decoding="async" width="1280" height="853" data-hero-day-image>
               </figure>
               <figure class="aw-hero-art aw-hero-art-night">
-                <img src="assets/sc-hero-night.webp" alt="" decoding="async" width="1280" height="853">
+                <img src="assets/sc-hero-night.webp" alt="" decoding="async" width="1280" height="853" data-hero-night-image>
               </figure>
               <div class="aw-hero-art-overlay" aria-hidden="true"></div>
+              <div class="aw-hero-art-wash" aria-hidden="true"></div>
             </div>
-            <div class="aw-hero-panel">
-              <div class="aw-hero-panel-head">
-                <span>Start from the worksite</span>
-                <span>Before solutions</span>
-              </div>
-              <strong>現場を知らずに、<br>DXはつくらない。</strong>
-              <p>何を導入するかより、誰が使うか。システムありきではなく、仕事の流れと困りごとを理解することから始めます。</p>
+            <div class="aw-hero-art-index" aria-hidden="true">
+              <span>Daylight</span>
+              <i></i>
+              <span>Nightfall</span>
             </div>
+          </div>
+
+          <div class="aw-hero-panel">
+            <div class="aw-hero-panel-head">
+              <span>Start from the worksite</span>
+              <span>Before solutions</span>
+            </div>
+            <strong>現場を知らずに、<br>DXはつくらない。</strong>
+            <p>何を導入するかより、誰が使うか。システムありきではなく、仕事の流れと困りごとを理解することから始めます。</p>
           </div>
         </div>
 
@@ -612,7 +735,7 @@
 
     <a class="aw-mobile-cta" href="#contact">困りごとを相談</a>
 
-    <script src="visuals.js?v=20260809-release-1"></script>
+    <script src="visuals.js?v=20260810-logo-focus-6"></script>
     <script src="script.js?v=20260809-release-1"></script>
   </body>
 </html>
