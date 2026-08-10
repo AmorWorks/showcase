@@ -43,7 +43,18 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-height) + 20px);
+  scrollbar-gutter: stable;
   background: var(--ink);
+}
+
+html.aw-opening-pending,
+html.aw-opening-pending body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+html.aw-opening-pending body {
+  touch-action: pinch-zoom;
 }
 
 html.motion-paused {
@@ -66,6 +77,273 @@ body {
 
 body.nav-open {
   overflow: hidden;
+}
+
+/* A short opening scene. The finished page remains the no-JS fallback. */
+.aw-opening {
+  position: fixed;
+  z-index: 950;
+  inset: 0;
+  display: none;
+  place-items: center;
+  overflow: hidden;
+  color: var(--paper-bright);
+  background: transparent;
+  isolation: isolate;
+}
+
+html.aw-opening-pending .aw-opening {
+  display: grid;
+}
+
+.aw-opening-atmosphere {
+  position: absolute;
+  z-index: 0;
+  inset: -8%;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(45, 148, 163, 0.22), transparent 36%),
+    radial-gradient(circle at 82% 24%, rgba(195, 154, 74, 0.14), transparent 38%),
+    radial-gradient(circle at 76% 82%, rgba(107, 66, 110, 0.18), transparent 42%),
+    linear-gradient(135deg, #061624 0%, #091f30 48%, #071827 100%);
+  opacity: 0.92;
+}
+
+.aw-opening-picture {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: min(100vw, calc(100svh * 1.5006));
+  aspect-ratio: 1280 / 853;
+  overflow: hidden;
+  background: transparent;
+  box-shadow: 0 28px 100px rgba(0, 8, 18, 0.16);
+  opacity: 1;
+  transform: translate3d(-50%, -50%, 0);
+  transform-origin: 50% 50%;
+  will-change: opacity;
+}
+
+.aw-opening-picture img,
+.aw-opening-material,
+.aw-opening-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.aw-opening-picture img {
+  object-fit: contain;
+}
+
+.aw-opening-day {
+  z-index: 0;
+  opacity: 0.08;
+  will-change: opacity;
+}
+
+.aw-opening-material {
+  z-index: 1;
+  display: block;
+  pointer-events: none;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  will-change: opacity, transform;
+}
+
+.aw-opening-material-letter {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background:
+    radial-gradient(circle at 18% 41%, rgba(255, 255, 255, 0.98) 0 3%, rgba(79, 211, 218, 0.9) 11%, transparent 27%),
+    radial-gradient(circle at 61% 40%, rgba(255, 241, 198, 0.98) 0 4%, rgba(201, 148, 58, 0.82) 14%, transparent 29%),
+    radial-gradient(ellipse at 40% 48%, rgba(92, 200, 211, 0.64), transparent 39%),
+    linear-gradient(105deg, #f9fcfb 4%, #68ced7 29%, #0b536f 51%, #d1a347 76%, #fff5d7 98%);
+  -webkit-mask-image: url("assets/brand/amorworks/source/amorworks-wordmark-official-native.png");
+  mask-image: url("assets/brand/amorworks/source/amorworks-wordmark-official-native.png");
+  -webkit-mask-position: 60.9% 40.9%;
+  mask-position: 60.9% 40.9%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 84.61% 26.96%;
+  mask-size: 84.61% 26.96%;
+  mix-blend-mode: screen;
+  opacity: 0;
+  transform-origin: center;
+  will-change: opacity, transform;
+}
+
+.aw-opening-material-a {
+  clip-path: inset(28% 74.45% 41% 10.7%);
+}
+
+.aw-opening-material-w {
+  clip-path: polygon(
+    51.8% 28%,
+    69.5% 28%,
+    69.5% 35%,
+    68.1% 42.2%,
+    66.8% 45.1%,
+    66.4% 47.5%,
+    66.3% 51%,
+    67.2% 53.5%,
+    67.2% 59%,
+    51.8% 59%
+  );
+}
+
+.aw-opening-material-source {
+  display: none !important;
+}
+
+.aw-opening-night {
+  z-index: 2;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.aw-opening-shade {
+  z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(3, 13, 24, 0.06), transparent 58%),
+    radial-gradient(circle at 50% 46%, transparent 56%, rgba(3, 13, 24, 0.1) 100%);
+}
+
+.aw-opening-brand {
+  position: absolute;
+  z-index: 3;
+  bottom: clamp(30px, 5vw, 64px);
+  left: clamp(24px, 5vw, 72px);
+  display: grid;
+  gap: 3px;
+  text-shadow: 0 2px 24px rgba(0, 10, 20, 0.48);
+}
+
+.aw-opening-brand span {
+  font-family: var(--display);
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  letter-spacing: 0.03em;
+}
+
+.aw-opening-brand small,
+.aw-opening-skip small {
+  color: rgba(252, 250, 246, 0.64);
+  font-size: 0.56rem;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.aw-opening-skip {
+  position: absolute;
+  z-index: 4;
+  top: max(18px, env(safe-area-inset-top));
+  right: max(18px, env(safe-area-inset-right));
+  display: grid;
+  min-width: 104px;
+  min-height: 48px;
+  place-content: center;
+  gap: 0;
+  padding: 7px 18px;
+  color: var(--paper-bright);
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  background: rgba(3, 17, 30, 0.48);
+  box-shadow: 0 8px 34px rgba(0, 8, 18, 0.2);
+  backdrop-filter: blur(14px);
+  text-align: center;
+}
+
+.aw-opening-skip span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+html.aw-opening-pending .site-header,
+html.aw-opening-pending .aw-hero-panel,
+html.aw-opening-pending .aw-capability-dock,
+html.aw-opening-pending .aw-scroll-cue {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(0, 10px, 0);
+}
+
+html.aw-opening-pending .site-header {
+  transform: translate3d(0, -8px, 0);
+}
+
+html.aw-opening-pending .aw-hero-copy {
+  pointer-events: none;
+}
+
+html.aw-opening-pending .aw-hero-copy > * {
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+}
+
+html.aw-opening-pending.aw-opening-ui .site-header,
+html.aw-opening-pending.aw-opening-ui .aw-hero-panel,
+html.aw-opening-pending.aw-opening-ui .aw-capability-dock,
+html.aw-opening-pending.aw-opening-ui .aw-scroll-cue {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 300ms cubic-bezier(.2, .72, .2, 1), transform 340ms cubic-bezier(.2, .72, .2, 1);
+}
+
+html.aw-opening-pending.aw-opening-ui .aw-hero-copy > * {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 300ms cubic-bezier(.2, .72, .2, 1), transform 360ms cubic-bezier(.2, .72, .2, 1);
+}
+
+html.aw-opening-pending.aw-opening-ui .site-header,
+html.aw-opening-pending.aw-opening-ui .aw-hero-copy,
+html.aw-opening-pending.aw-opening-ui .aw-hero-panel,
+html.aw-opening-pending.aw-opening-ui .aw-capability-dock,
+html.aw-opening-pending.aw-opening-ui .aw-scroll-cue {
+  pointer-events: auto;
+}
+
+html.aw-opening-pending.aw-opening-ui .aw-hero-copy > :nth-child(1) { transition-delay: 30ms; }
+html.aw-opening-pending.aw-opening-ui .aw-hero-copy > :nth-child(2) { transition-delay: 70ms; }
+html.aw-opening-pending.aw-opening-ui .aw-hero-copy > :nth-child(3) { transition-delay: 110ms; }
+html.aw-opening-pending.aw-opening-ui .aw-hero-copy > :nth-child(4) { transition-delay: 160ms; }
+html.aw-opening-pending.aw-opening-ui .aw-hero-copy > :nth-child(5) { transition-delay: 220ms; }
+
+html.aw-opening-pending .hero-actions .button {
+  opacity: 0;
+  transform: translate3d(0, 6px, 0);
+}
+
+html.aw-opening-pending.aw-opening-ui .hero-actions .button {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 280ms cubic-bezier(.2, .72, .2, 1), transform 320ms cubic-bezier(.2, .72, .2, 1);
+}
+
+html.aw-opening-pending.aw-opening-ui .hero-actions .button:first-child { transition-delay: 200ms; }
+html.aw-opening-pending.aw-opening-ui .hero-actions .button:last-child { transition-delay: 260ms; }
+
+html.aw-opening-pending.aw-opening-ui .aw-hero-panel {
+  transition-delay: 250ms;
+}
+
+html.aw-opening-pending.aw-opening-ui .aw-capability-dock,
+html.aw-opening-pending.aw-opening-ui .aw-scroll-cue {
+  transition-delay: 300ms;
+}
+
+html.aw-opening-bypassed .aw-hero-visual-field,
+html.aw-opening-bypassed .aw-hero-art,
+html.aw-opening-bypassed .aw-hero-art-index span,
+html.aw-opening-bypassed .aw-hero-art-index i::after,
+html.aw-opening-bypassed .hero-actions .button {
+  transition: none !important;
 }
 
 ::selection {
@@ -425,9 +703,9 @@ p {
 
 .aw-hero {
   --hero-night-opacity: 0;
-  --hero-pan-x: 0px;
-  --hero-pan-y: 0px;
-  --hero-scale: 1.02;
+  --hero-night-progress: 0;
+  --hero-overlay-opacity: 0.34;
+  --hero-line-progress: 1;
   position: relative;
   display: grid;
   min-height: 100svh;
@@ -494,6 +772,17 @@ p {
   z-index: 0;
   inset: 0;
   pointer-events: none;
+  transition: none;
+}
+
+html.aw-opening-pending .aw-hero-visual-field {
+  opacity: 0;
+  transition: none;
+}
+
+html.aw-opening-pending.aw-opening-ui .aw-hero-visual-field {
+  opacity: 1;
+  transition: opacity 760ms cubic-bezier(.22, .61, .36, 1) 80ms;
 }
 
 .aw-signal-canvas {
@@ -501,7 +790,7 @@ p {
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.58;
+  opacity: 0.1;
   mix-blend-mode: screen;
 }
 
@@ -509,8 +798,8 @@ p {
   position: absolute;
   display: block;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.25;
+  filter: blur(118px);
+  opacity: 0.13;
 }
 
 .aw-hero-glow-one {
@@ -533,14 +822,30 @@ p {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(380px, 0.98fr);
-  align-items: center;
-  gap: clamp(44px, 7vw, 100px);
+  grid-template-areas:
+    "copy art"
+    "copy panel";
+  grid-template-columns: minmax(420px, 0.82fr) minmax(520px, 1.18fr);
+  align-items: start;
+  width: min(1320px, calc(100% - 64px));
+  gap: 18px clamp(38px, 5vw, 76px);
 }
 
 .aw-hero-copy {
   position: relative;
+  grid-area: copy;
+  align-self: center;
+  padding-block: clamp(18px, 4vw, 52px);
 }
+
+.aw-hero-copy > * {
+  --hero-intro-delay: 360ms;
+}
+
+.aw-hero-copy > :nth-child(2) { --hero-intro-delay: 420ms; }
+.aw-hero-copy > :nth-child(3) { --hero-intro-delay: 480ms; }
+.aw-hero-copy > :nth-child(4) { --hero-intro-delay: 540ms; }
+.aw-hero-copy > :nth-child(5) { --hero-intro-delay: 600ms; }
 
 .aw-hero-copy .eyebrow {
   margin-bottom: 28px;
@@ -550,7 +855,7 @@ p {
 .aw-hero-copy h1 {
   display: grid;
   color: var(--paper-bright);
-  font-size: clamp(3rem, 4.7vw, 5.6rem);
+  font-size: clamp(3rem, 4.15vw, 5.1rem);
   line-height: 0.98;
 }
 
@@ -642,29 +947,41 @@ p {
 
 .aw-hero-artboard {
   position: relative;
-  width: min(100%, 600px);
+  grid-area: art;
+  width: min(100%, 760px);
   margin-left: auto;
-  transform: translate3d(0, var(--parallax-y, 0px), 0);
 }
 
 .aw-hero-art-frame {
   position: relative;
-  aspect-ratio: 5 / 4;
+  aspect-ratio: 1280 / 853;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.24);
   background: var(--paper-bright);
   box-shadow: var(--shadow-deep);
-  clip-path: polygon(4% 0, 100% 5%, 96% 100%, 0 94%);
+  clip-path: polygon(1.2% 0, 100% 1.4%, 98.7% 100%, 0 98.2%);
+  transform-origin: center;
+}
+
+.aw-hero-art-frame::after {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  border: 1px solid rgba(252, 250, 246, 0.34);
+  box-shadow: inset 0 0 70px rgba(7, 27, 45, 0.08);
 }
 
 .aw-hero-art {
   position: absolute;
   inset: 0;
-  transform: translate3d(var(--hero-pan-x), var(--hero-pan-y), 0) scale(var(--hero-scale));
-  transition: opacity 120ms linear;
+  transform: none;
+  transition: opacity 900ms cubic-bezier(.22, .61, .36, 1);
 }
 
 .aw-hero-art img {
+  width: 100%;
   height: 100%;
   object-fit: cover;
 }
@@ -673,36 +990,103 @@ p {
   opacity: var(--hero-night-opacity);
 }
 
+.aw-hero.is-cinema-arrived {
+  --hero-night-opacity: 1;
+  --hero-night-progress: 1;
+  --hero-overlay-opacity: 0.82;
+}
+
+html.aw-opening-pending .aw-hero {
+  --hero-line-progress: 0;
+}
+
+html.aw-opening-pending.aw-opening-ui .aw-hero {
+  --hero-line-progress: 1;
+}
+
 .aw-hero-art-overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(140deg, transparent 42%, rgba(4, 18, 30, 0.18)),
-    linear-gradient(to top, rgba(4, 18, 30, 0.18), transparent 40%);
+    linear-gradient(140deg, transparent 58%, rgba(4, 18, 30, 0.1)),
+    linear-gradient(to top, rgba(4, 18, 30, 0.1), transparent 32%);
   mix-blend-mode: multiply;
+  opacity: var(--hero-overlay-opacity);
+}
+
+.aw-hero-art-wash {
+  display: none;
+}
+
+.aw-hero-art-index {
+  display: grid;
+  grid-template-columns: auto minmax(80px, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  color: rgba(252, 250, 246, 0.44);
+  font-size: 0.56rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.aw-hero-art-index span {
+  transition: color 420ms ease, opacity 420ms ease;
+}
+
+.aw-hero-art-index span:first-child {
+  opacity: max(0.34, calc(1 - var(--hero-night-progress)));
+}
+
+.aw-hero-art-index span:last-child {
+  color: var(--gold-bright);
+  opacity: max(0.44, var(--hero-night-progress));
+}
+
+.aw-hero-art-index i {
+  position: relative;
+  height: 1px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.aw-hero-art-index i::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(90deg, var(--cyan-bright), var(--gold-bright));
+  transform: scaleX(var(--hero-line-progress));
+  transform-origin: left;
+  transition: transform 600ms cubic-bezier(.2, .72, .2, 1);
 }
 
 .aw-hero-panel {
   position: relative;
   z-index: 2;
-  width: min(88%, 420px);
-  margin: -70px 0 0 -38px;
-  padding: 24px 26px 26px;
+  display: grid;
+  grid-area: panel;
+  grid-template-columns: minmax(142px, 0.52fr) minmax(230px, 1fr);
+  column-gap: clamp(20px, 3vw, 34px);
+  width: min(100%, 760px);
+  margin-left: auto;
+  padding: 21px 24px 22px;
   color: var(--ink);
   border: 1px solid rgba(195, 154, 74, 0.42);
-  background: rgba(252, 250, 246, 0.94);
-  box-shadow: 0 20px 58px rgba(0, 10, 20, 0.24);
-  backdrop-filter: blur(14px);
+  background: rgba(252, 250, 246, 0.96);
+  box-shadow: 0 18px 48px rgba(0, 10, 20, 0.2);
+  backdrop-filter: blur(12px);
 }
 
 .aw-hero-panel-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 18px;
-  padding-bottom: 10px;
+  display: grid;
+  align-content: space-between;
+  justify-items: start;
+  grid-row: 1 / span 2;
+  gap: 10px;
+  margin: 0;
+  padding: 2px 20px 2px 0;
   color: var(--cyan);
-  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
   font-size: 0.62rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -711,7 +1095,7 @@ p {
 .aw-hero-panel > strong {
   display: block;
   font-family: var(--display);
-  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  font-size: clamp(1.25rem, 1.65vw, 1.65rem);
   font-weight: 600;
   line-height: 1.45;
 }
@@ -818,7 +1202,15 @@ p {
   height: 100%;
   content: "";
   background: var(--gold-bright);
-  animation: scroll-line 2.4s ease-in-out infinite;
+  animation: none;
+}
+
+html:not(.aw-opening-pending):not(.motion-paused) .aw-scroll-cue i::after {
+  animation: scroll-line 2.4s ease-in-out 650ms infinite;
+}
+
+html.aw-opening-bypassed .aw-scroll-cue i::after {
+  animation: none;
 }
 
 @keyframes scroll-line {
@@ -2952,18 +3344,24 @@ p {
 }
 
 /* Responsive */
+@media (min-width: 821px) {
+  .aw-hero-purpose-title > span:not(.aw-hero-brandline) {
+    white-space: nowrap;
+  }
+}
+
 @media (max-width: 1080px) {
   .site-nav {
     gap: 16px;
   }
 
   .aw-hero-inner {
-    grid-template-columns: minmax(0, 1fr) minmax(340px, 0.86fr);
-    gap: 42px;
+    grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+    gap: 18px 34px;
   }
 
   .aw-hero-copy h1 {
-    font-size: clamp(2.8rem, 5.4vw, 4.9rem);
+    font-size: clamp(2.65rem, 4.7vw, 4.5rem);
   }
 
   .aw-gateway-grid {
@@ -3000,6 +3398,42 @@ p {
 
   .process-meta {
     grid-column: 2 / -1;
+  }
+}
+
+@media (max-width: 960px) {
+  .aw-hero {
+    min-height: auto;
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+
+  .aw-hero-inner {
+    grid-template-areas:
+      "art"
+      "copy"
+      "panel";
+    grid-template-columns: 1fr;
+    width: min(760px, calc(100% - 48px));
+    gap: 30px;
+  }
+
+  .aw-hero-copy {
+    padding-block: 10px 0;
+  }
+
+  .aw-hero-artboard,
+  .aw-hero-panel {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .aw-signal-canvas {
+    opacity: 0.08;
+  }
+
+  .aw-scroll-cue {
+    display: none;
   }
 }
 
@@ -3126,13 +3560,22 @@ p {
 
   .aw-hero {
     min-height: auto;
-    padding-top: 116px;
+    padding-top: 96px;
     padding-bottom: 96px;
   }
 
   .aw-hero-inner {
+    grid-template-areas:
+      "art"
+      "copy"
+      "panel";
     grid-template-columns: 1fr;
-    gap: 58px;
+    width: min(720px, calc(100% - 40px));
+    gap: 30px;
+  }
+
+  .aw-hero-copy {
+    padding-block: 10px 0;
   }
 
   .aw-hero-copy h1 {
@@ -3144,13 +3587,17 @@ p {
   }
 
   .aw-hero-artboard {
-    width: 96%;
+    width: 100%;
     margin: 0 auto;
   }
 
   .aw-hero-panel {
-    width: 88%;
-    margin: -38px auto 0;
+    width: 100%;
+    margin: 0;
+  }
+
+  .aw-signal-canvas {
+    opacity: 0.08;
   }
 
   .aw-capability-dock {
@@ -3271,6 +3718,22 @@ p {
     width: calc(100% - 28px);
   }
 
+  .aw-opening-picture {
+    width: 100vw;
+    transform: translate3d(-50%, -50%, 0);
+    transform-origin: 50% 50%;
+  }
+
+  .aw-opening-brand {
+    right: 18px;
+    bottom: max(24px, env(safe-area-inset-bottom));
+    left: 18px;
+  }
+
+  .aw-opening-brand small {
+    display: none;
+  }
+
   .aw-hero-gridline {
     left: 14px;
   }
@@ -3318,12 +3781,24 @@ p {
   }
 
   .aw-hero-art-frame {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1280 / 853;
   }
 
   .aw-hero-panel {
-    width: calc(100% - 24px);
+    grid-template-columns: 1fr;
+    width: 100%;
     padding: 20px;
+  }
+
+  .aw-hero-panel-head {
+    display: flex;
+    grid-row: auto;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding: 0 0 10px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
   }
 
   .aw-capability-dock,
@@ -4372,6 +4847,18 @@ p {
   }
 }
 
+.motion-paused .aw-hero {
+  --hero-night-opacity: 0 !important;
+  --hero-night-progress: 0 !important;
+  --hero-overlay-opacity: 0.34 !important;
+  --hero-line-progress: 1 !important;
+}
+
+.motion-paused .aw-opening,
+.motion-paused .aw-hero-art-wash {
+  display: none !important;
+}
+
 .motion-paused .site-progress {
   display: none;
 }
@@ -4415,6 +4902,18 @@ p {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .aw-hero {
+    --hero-night-opacity: 0 !important;
+    --hero-night-progress: 0 !important;
+    --hero-overlay-opacity: 0.34 !important;
+    --hero-line-progress: 1 !important;
+  }
+
+  .aw-opening,
+  .aw-hero-art-wash {
+    display: none !important;
+  }
+
   .site-progress,
   .aw-click-bloom,
   .aw-motion-toggle {
